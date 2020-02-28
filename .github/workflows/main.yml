@@ -1,32 +1,16 @@
-name: deploy to ftp
-
-on:
-  push:
-paths-ignore: 
-- '.github/**'
+on: push
+name: Publish Website
 jobs:
-  build:
-
-runs-on: ubuntu-latest
-
-container: 
-  image: debian:stable-slim
-
-steps:
-- name: 初始化环境
-  run: |
-apt-get update
-apt-get install -y git 
-apt-get install -y git-ftp
-- name: 克隆github项目
-  uses: actions/checkout@master
-  with:
-  fetch-depth: 2   
-- name: 开始ftp同步
-  run: |        
-# Setup
-git config git-ftp.url "v0.ftp.upyun.com"
-git config git-ftp.user "zhongziming/zzm-android-book"             
-git config git-ftp.password "V3Er0v84eBuTExI6NoAs3lzbFVDvpjsH"
-#--disable-epsv可选，因为我的服务器不支持epsv
-git ftp push --auto-init -vv
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        ftp-server: v0.ftp.upyun.com
+        ftp-username: zhongziming/zzm-android-book
+        ftp-password: ${{ secrets.android_book_ftp_pwd }}
