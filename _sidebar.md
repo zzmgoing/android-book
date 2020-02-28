@@ -1,2 +1,5 @@
-* [首页](ERADME.md)
-* [Android](doc/)
+* [首页](/)
+* [Android架构](docs/)
+* [Android四大组件](docs/四大组件.md)
+* [常用布局及标签](docs/常用布局及标签.md)  
+* [Android面试](docs/Android面试.md)
