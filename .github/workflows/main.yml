@@ -1,18 +1,32 @@
+name: deploy to ftp
+
+on:
+  push:
+paths-ignore: 
+- '.github/**'
+jobs:
+  build:
+
+runs-on: ubuntu-latest
+
+container: 
+  image: debian:stable-slim
+
+steps:
+- name: 初始化环境
+  run: |
+apt-get update
+apt-get install -y git 
+apt-get install -y git-ftp
+- name: 克隆github项目
+  uses: actions/checkout@master
+  with:
+  fetch-depth: 2   
+- name: 开始ftp同步
+  run: |        
 # Setup
 git config git-ftp.url "v0.ftp.upyun.com"
 git config git-ftp.user "zhongziming/zzm-android-book"             
 git config git-ftp.password "V3Er0v84eBuTExI6NoAs3lzbFVDvpjsH"
-# Upload all files
-git ftp init
-
-# Or if the files are already there
-git ftp catchup
-
-# Work and deploy
-echo "new content" >> index.txt
-git commit index.txt -m "Add new content"
-git ftp push
-# 1 file to sync:
-# [1 of 1] Buffered for upload 'index.txt'.
-# Uploading ...
-# Last deployment changed to ded01b27e5c785fb251150805308d3d0f8117387.
+#--disable-epsv可选，因为我的服务器不支持epsv
+git ftp push --auto-init -vv
