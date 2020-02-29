@@ -1,7 +1,7 @@
 # Android 架构
 Android 是一种基于 Linux 的开放源代码软件栈，为各类设备和机型而创建。下图所示为 Android 平台的主要组件。
 
-![android架构图](_media/android-stack_2x.png)
+![android架构图](../_media/android-stack_2x.png)
 ## Linux 内核
 Android 平台的基础是 Linux 内核。例如，Android Runtime (ART) 依靠 Linux 内核来执行底层功能，例如线程和低层内存管理。
 
