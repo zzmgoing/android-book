@@ -5,7 +5,7 @@
 
 Activity生命周期图
 
-![activity](../_media/activity.png)
+![activity](https://img.upyun.zzming.cn/android/activity.png)
 
 |  回调   |  描述   |
 | --- | --- |
@@ -20,13 +20,13 @@ Activity生命周期图
 ### Activity启动模式  
 
 #### 默认启动模式**Standard**
-![standard](../_media/activity_standard)
+![standard](https://img.upyun.zzming.cn/android/activity_standard)
 #### 栈顶复用模式**SingleTop**
-![singleTop](../_media/activity_singleTop)
+![singleTop](https://img.upyun.zzming.cn/android/activity_singleTop)
 #### 栈内复用模式**SingleTask**
-![singleTask](../_media/activity_singleTask)
+![singleTask](https://img.upyun.zzming.cn/android/activity_singleTask)
 #### 全局唯一模式**SingleInstance**
-![singleInstance](../_media/activity_singleInstance)
+![singleInstance](https://img.upyun.zzming.cn/android/activity_singleInstance)
 
 ## Service
 > 处理与应用程序关联的后台操作。  
@@ -40,7 +40,7 @@ Activity生命周期图
 
 Service生命周期图
 
-![service](../_media/service.png)
+![service](https://img.upyun.zzming.cn/android/service.png)
 
 在Service的生命周期里，常用的有：
 
@@ -86,7 +86,7 @@ Service生命周期图
 
 ### 注册广播接收器 {docsify-ignore}
 
-![broadcast](../_media/broadcast.jpg)
+![broadcast](https://img.upyun.zzming.cn/android/broadcast.jpg)
 
 ```
 <application
@@ -135,7 +135,7 @@ public class MyReceiver extends BroadcastReceiver {
 > 处理数据和数据库管理方面的问题。  
 > 内容提供者组件通过请求从一个应用程序向其他的应用程序提供数据。这些请求由类 ContentResolver 的方法来处理。内容提供者可以使用不同的方式来存储数据。数据可以被存放在数据库，文件，甚至是网络。
 
-![content](../_media/content.jpg)
+![content](https://img.upyun.zzming.cn/android/content.jpg)
 
 有时候需要在应用程序之间共享数据。这时内容提供者变得非常有用。
 * 内容提供者可以让内容集中，必要时可以有多个不同的应用程序来访问。
@@ -163,7 +163,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 以下是让你的内容提供者正常工作，你需要在类 ContentProvider 中重写的一些方法：
 
-![content1](../_media/content1.jpg)
+![content1](https://img.upyun.zzming.cn/android/content1.jpg)
 
 |  部分   |  说明  |
 | --- | --- |

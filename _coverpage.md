@@ -1,4 +1,4 @@
-![logo](_media/icon.svg)
+![logo](https://img.upyun.zzming.cn/android/icon.svg)
 
 # Android Book
 
