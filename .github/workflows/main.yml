@@ -11,15 +11,6 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        ftp-server: v0.ftp.upyun.com
-        ftp-username: zhongziming/zzm-android-book
-        ftp-password: ${{ secrets.android_book_ftp_pwd }}
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action-2
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
-      with:
         ftp-server: byu4287180001.my3w.com
         ftp-username: byu4287180001
         ftp-password: ${{ secrets.android_book_ftp_pwd_zzm }}
