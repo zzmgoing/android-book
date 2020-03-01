@@ -9,7 +9,7 @@
 * Android 面试总结
 
 [GitHub](https://github.com/zzmgoing/android-book)
-[Get Started](#quick-start)
+[Get Started](#android-学习文档)
 
 <!-- 背景图片 -->
 <!--  ![](_media/bg.png) -->

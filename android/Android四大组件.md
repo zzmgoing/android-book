@@ -1,4 +1,5 @@
 # Android四大组件
+
 ## Activity
 > 描述UI，并且处理用户与机器屏幕的交互。
 
@@ -16,14 +17,15 @@ Activity生命周期图
 |  onDestroy()   |  当活动被系统销毁之前调用  |
 |  onRestart()   |  当活动被停止以后重新打开时调用  |
 
-### Activity启动模式
-#### 默认启动模式**Standard** {docsify-ignore}
+### Activity启动模式  
+
+#### 默认启动模式**Standard**
 ![standard](../_media/activity_standard)
-#### 栈顶复用模式**SingleTop** {docsify-ignore}
+#### 栈顶复用模式**SingleTop**
 ![singleTop](../_media/activity_singleTop)
-#### 栈内复用模式**SingleTask** {docsify-ignore}
+#### 栈内复用模式**SingleTask**
 ![singleTask](../_media/activity_singleTask)
-#### 全局唯一模式**SingleInstance** {docsify-ignore}
+#### 全局唯一模式**SingleInstance**
 ![singleInstance](../_media/activity_singleInstance)
 
 ## Service

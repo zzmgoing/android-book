@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Android Book</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel='icon' href='_media/android-ico.ico' type='image/x-icon'/>
-  <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
-  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+    <meta charset="UTF-8">
+    <title>Android Book</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel='stylesheet' href='https://www.zzming.cn/layui/css/layui.css' media='all'/>
+    <link rel='icon' href='_media/android-ico.ico' type='image/x-icon'/>
+    <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
 </head>
 <body>
-  <div data-app id="main">加载中</div>
-  <script>
+<div id="app">
+    <img class="layui-anim layui-anim-rotate layui-anim-loop" src="_media/icon.svg" align="center">
+</div>
+<script>
     window.$docsify = {
-      name: 'Android文档',
-      nameLink: '/',
-      repo: 'https://github.com/zzmgoing/android-book',
-	  el: '#main',
-	  // 加载 _sidebar.md
-	  loadSidebar: true,
-	  autoHeader: true,
-	  // 加载 summary.md
-	  //loadSidebar: 'summary.md'
-	  subMaxLevel: 6,
-      // loadNavbar: true,
-      auto2top: true,
-	  // 封面
-	  coverpage: true,
-	  // 侧边栏的logo
-	  logo: '/_media/icon_small.svg',
-	  themeColor: '#36ab60',
-	  executeScript: true,
-	  // mergeNavbar: true,
-	  formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
-	  notFoundPage: true,
-	  ga: 'UA-159322586-1',
-      search: {
-        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        paths: 'auto', // or 'auto'
-        placeholder: '搜一把试试',
-        noData: '怎么肥事，没有搜到',
-        // 搜索标题的最大程级, 1 - 6
-        depth: 6
-      }
+        name: 'Android Book',
+        // nameLink: '/',
+        repo: 'https://github.com/zzmgoing/android-book',
+        // el: '#main',
+        // 加载 _sidebar.md
+        loadSidebar: true,
+        // autoHeader: true,
+        //loadSidebar: 'summary.md'
+        maxLevel: 4,
+        subMaxLevel: 4,
+        // loadNavbar: true,
+        auto2top: true,
+        // 封面
+        coverpage: true,
+        // 侧边栏的logo
+        // logo: '/_media/icon_small.svg',
+        themeColor: '#36ab60',
+        executeScript: true,
+        // mergeNavbar: true,
+        formatUpdated: '{YYYY}/{MM}/{DD} {HH}:{mm}',
+        notFoundPage: true,
+        ga: 'UA-159322586-1',
+        search: {
+            maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+            paths: 'auto', // or 'auto'
+            placeholder: '搜一把试试',
+            noData: '怎么肥事，没有搜到',
+            // 搜索标题的最大程级, 1 - 6
+            depth: 6
+        }
     }
-  </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/ga.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
-  <script src="//unpkg.com/docsify-copy-code"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
-  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script>
-	const gitalk = new Gitalk({
-		clientID: 'e85b8971feff135f28dd',
-		clientSecret: '64ae63531a78393f31f02d7c866b2f27281ab059',
-		repo: 'android-book',
-		owner: 'zzmgoing',
-		admin: ['zzmgoing'],
-        id: location.href,
-		// facebook-like distraction free mode
-		distractionFreeMode: false
-	})
-  </script>
+</script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/ga.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+<script src="//unpkg.com/docsify-copy-code"></script>
+<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: 'e85b8971feff135f28dd',
+        clientSecret: '64ae63531a78393f31f02d7c866b2f27281ab059',
+        repo: 'android-book',
+        owner: 'zzmgoing',
+        admin: ['zzmgoing'],
+        // facebook-like distraction free mode
+        distractionFreeMode: false
+    })
+</script>
 </body>
 </html>
