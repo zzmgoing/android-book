@@ -49,6 +49,7 @@
         }
     }
 </script>
+<script src="/js/md5.min.js"></script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/ga.js"></script>
@@ -58,7 +59,6 @@
 <script src="//unpkg.com/docsify-copy-code"></script>
 <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
 <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script>
 <script>
     const gitalk = new Gitalk({
         clientID: 'e85b8971feff135f28dd',
@@ -66,17 +66,9 @@
         repo: 'android-book',
         owner: 'zzmgoing',
         admin: ['zzmgoing'],
-        title: location.hash.match(/#(.*?)([?]|$)/)[1],
-        id: location.hash.match(/#(.*?)([?]|$)/)[1],
-        // facebook-like distraction free mode
-        distractionFreeMode: false
+        // title: location.hash.match(/#(.*?)([?]|$)/)[1],
+        id: md5(location.href),
     });
-    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
-    window.onhashchange = function(event){
-        if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
-            location.reload();
-        }
-    }
 </script>
 </body>
 </html>
