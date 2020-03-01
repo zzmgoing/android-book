@@ -14,10 +14,6 @@ jobs:
         ftp-server: v0.ftp.upyun.com
         ftp-username: zhongziming/zzm-android-book
         ftp-password: ${{ secrets.android_book_ftp_pwd }}
-  FTP-Deploy-Action-2:
-    name: FTP-Deploy-Action-2
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@master
       with:
         fetch-depth: 2
