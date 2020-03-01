@@ -11,7 +11,6 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        ftp-server: byu4287180001.my3w.com
+        ftp-server: byu4287180001.my3w.com:21/htdocs/books/android
         ftp-username: byu4287180001
         ftp-password: ${{ secrets.android_book_ftp_pwd_zzm }}
-        ftp-remote-root: htdocs/books/android
