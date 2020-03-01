@@ -66,8 +66,9 @@
         repo: 'android-book',
         owner: 'zzmgoing',
         admin: ['zzmgoing'],
-        // title: location.hash.match(/#(.*?)([?]|$)/)[1],
-        id: md5(location.href),
+        title: decodeURI(location.href),
+        id: md5(decodeURI(location.href)),
+        body: decodeURI(location.href) + header.meta[description]
     });
 </script>
 </body>
