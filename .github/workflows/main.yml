@@ -14,4 +14,4 @@ jobs:
         ftp-server: byu4287180001.my3w.com
         ftp-username: byu4287180001
         ftp-password: ${{ secrets.android_book_ftp_pwd_zzm }}
-        local-dir: ./htdocs/books/android/
+        ftp-remote-root: htdocs/books/android
