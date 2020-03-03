@@ -1,7 +1,7 @@
 * [**Java基础**](java/Java基础.md)
 * * [Java四大特性](java/Java四大特性.md)
 * * [基本数据类型](java/基本数据类型.md)
-* * [数据结构和算法](java/数据结构和算法.md) 
+* * [数据结构与算法](java/数据结构与算法.md)
 
 * [**Android基础**](android/Android基础.md)
 * * [Android四大组件](android/Android四大组件.md)

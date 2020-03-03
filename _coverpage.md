@@ -4,9 +4,6 @@
 
 > A Book for learning Android.
 
-* Android 基础知识
-* Android 深入浅出
-* Android 面试总结
 
 [GitHub](https://github.com/zzmgoing/android-book)
 [Get Started](#android-学习文档)
