@@ -1,4 +1,4 @@
-<div style="text-align: center;"><img src="https://img.upyun.zzming.cn/android/icon.svg" alt="logo"/></div>
+<div style="text-align: center;" id="get_started"><img src="https://img.upyun.zzming.cn/android/icon.svg" alt="logo"/></div>
 
 <div style="text-align: center;"><h1>Android 学习文档</h1></div>
 

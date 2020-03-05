@@ -6,7 +6,7 @@
 
 
 [GitHub](https://github.com/zzmgoing/android-book)
-[Get Started](#android-学习文档)
+[Get Started](#get_started)
 
 <!-- 背景图片 -->
 <!--  ![](_media/bg.png) -->
