@@ -4,11 +4,6 @@
 
 > A Book for learning Android.
 
-
+[Gitee](https://gitee.com/zhongziming/android-book)
 [GitHub](https://github.com/zzmgoing/android-book)
 [Get Started](#get_started)
-
-<!-- 背景图片 -->
-<!--  ![](_media/bg.png) -->
-<!-- 背景色 -->
-<!--  ![color](#f0f0f0)  -->
