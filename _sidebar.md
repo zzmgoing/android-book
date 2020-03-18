@@ -10,10 +10,12 @@
 * * [常用布局及标签](android/常用布局及标签.md)
 * * [动画](android/动画.md)
 * * [多线程](android/多线程.md)
+* * [自定义控件](android/自定义控件.md)
 
 * [**Android面试**](interview/Android面试.md)
 * * [性能优化](interview/性能优化.md)
 * * [内存泄漏](interview/内存泄漏.md)
 * * [Service进程防杀](interview/Service进程防杀.md)
+* * [View事件分发](interview/View事件分发.md)
 
 * [**Android开源库**](android/Android开源库.md)
