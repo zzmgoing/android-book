@@ -9,7 +9,7 @@
 * * [Android四大组件](android/Android四大组件.md)
 * * [常用布局及标签](android/常用布局及标签.md)
 * * [动画](android/动画.md)
-* * [多线程](android/多线程.md)
+* * [进程和多线程](android/进程和多线程.md)
 * * [自定义控件](android/自定义控件.md)
 
 * [**Android面试**](interview/Android面试.md)
