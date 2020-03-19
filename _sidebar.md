@@ -13,8 +13,7 @@
 * * [自定义控件](android/自定义控件.md)
 
 * [**Android面试**](interview/Android面试.md)
-* * [性能优化](interview/性能优化.md)
-* * [内存泄漏](interview/内存泄漏.md)
+* * [内存泄漏和性能优化](interview/内存泄漏和性能优化.md)
 * * [Service进程防杀](interview/Service进程防杀.md)
 * * [View事件分发](interview/View事件分发.md)
 

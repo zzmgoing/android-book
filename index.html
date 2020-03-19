@@ -14,6 +14,9 @@
         span {
             color: #A5A5A5;
         }
+        .gray-bg {
+            background-color: lightgray;
+        }
     </style>
 </head>
 <body>
@@ -39,11 +42,10 @@
         notFoundPage: true,
         ga: 'UA-159322586-1',
         search: {
-            maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-            paths: 'auto', // or 'auto'
+            maxAge: 86400000,
+            paths: 'auto',
             placeholder: '搜一把试试',
             noData: '怎么肥事，没有搜到',
-            // 搜索标题的最大程级, 1 - 6
             depth: 6
         },
         plugins: [
