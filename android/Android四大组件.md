@@ -88,7 +88,7 @@ Service生命周期图
 
 ![broadcast](https://img.upyun.zzming.cn/android/broadcast.jpg)
 
-```
+```xml
 <application
    android:icon="@drawable/ic_launcher"
    android:label="@string/app_name"
@@ -105,7 +105,7 @@ Service生命周期图
 </application>
 ```
 ### 广播自定义意图 {docsify-ignore}
-```
+```java
 // 广播自定义意图
 public void broadcastIntent(View view){
     Intent intent = new Intent();
@@ -115,7 +115,7 @@ public void broadcastIntent(View view){
 }
 ```
 ### 创建广播接收器 {docsify-ignore}
-```
+```java
 package cn.programmer;
 
 import android.content.BroadcastReceiver;

@@ -7,9 +7,10 @@
     <meta name="description" content="Description">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel='stylesheet' href='https://www.zzming.cn/layui/css/layui.css' media='all'/>
     <link rel='icon' href='https://img.upyun.zzming.cn/android/android-ico.ico' type='image/x-icon'/>
+    <link rel='stylesheet' href='https://www.zzming.cn/layui/css/layui.css' media='all'/>
     <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+    <link rel="stylesheet" href="https://img.upyun.zzming.cn/css/prism.css">
     <style>
         span {
             color: #A5A5A5;
@@ -51,7 +52,8 @@
         plugins: [
             function (hook) {
                 var cyan = ['<div id="SOHUCS">', '</div>',
-                '<scrip','t src="https://img.upyun.zzming.cn/js/changyan.js">','</scrip','t>'].join('');
+                '<scrip','t src="https://img.upyun.zzming.cn/js/changyan.js">','</scrip','t>',
+                    '<scrip','t src="https://img.upyun.zzming.cn/js/prism.js">','</scrip','t>'].join('');
                 hook.afterEach(function (html) {
                     return html + cyan;
                 });

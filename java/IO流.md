@@ -29,7 +29,7 @@ int read(byte\[\]): 读取一定量的字节数，并存储到字节数组中，
 
 **处理IO流异常**
 
-```
+```java
 public class FileOutputStreamDemo {
     public static void main(String[] args) {
         File file = new File("c:\\file.txt");
