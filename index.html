@@ -15,6 +15,7 @@
         span {
             color: #A5A5A5;
         }
+
         .gray-bg {
             background-color: lightgray;
         }
@@ -22,7 +23,8 @@
 </head>
 <body>
 <div id="app">
-    <img class="layui-anim layui-anim-rotate layui-anim-loop" src="https://img.upyun.zzming.cn/android/icon.svg" align="center">
+    <img class="layui-anim layui-anim-rotate layui-anim-loop" src="https://img.upyun.zzming.cn/android/icon.svg"
+         align="center">
 </div>
 <script type="text/javascript">
     window.$docsify = {
@@ -52,8 +54,8 @@
         plugins: [
             function (hook) {
                 var cyan = ['<div id="SOHUCS">', '</div>',
-                '<scrip','t src="https://img.upyun.zzming.cn/js/changyan.js">','</scrip','t>',
-                    '<scrip','t src="https://img.upyun.zzming.cn/js/prism.js">','</scrip','t>'].join('');
+                    '<scrip', 't src="https://img.upyun.zzming.cn/js/changyan.js">', '</scrip', 't>',
+                    '<scrip', 't src="https://img.upyun.zzming.cn/js/prism.js">', '</scrip', 't>'].join('');
                 hook.afterEach(function (html) {
                     return html + cyan;
                 });
