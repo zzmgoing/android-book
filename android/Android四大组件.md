@@ -17,15 +17,15 @@ Activity生命周期图
 |  onDestroy()   |  当活动被系统销毁之前调用  |
 |  onRestart()   |  当活动被停止以后重新打开时调用  |
 
-### Activity启动模式  
+### Activity启动模式  {docsify-ignore}
 
-#### 默认启动模式**Standard**
+#### 默认启动模式**Standard**  {docsify-ignore}
 ![standard](https://img.upyun.zzming.cn/android/activity_standard)
-#### 栈顶复用模式**SingleTop**
+#### 栈顶复用模式**SingleTop**  {docsify-ignore}
 ![singleTop](https://img.upyun.zzming.cn/android/activity_singleTop)
-#### 栈内复用模式**SingleTask**
+#### 栈内复用模式**SingleTask**  {docsify-ignore}
 ![singleTask](https://img.upyun.zzming.cn/android/activity_singleTask)
-#### 全局唯一模式**SingleInstance**
+#### 全局唯一模式**SingleInstance**  {docsify-ignore}
 ![singleInstance](https://img.upyun.zzming.cn/android/activity_singleInstance)
 
 ## Service
@@ -44,7 +44,7 @@ Service生命周期图
 
 在Service的生命周期里，常用的有：
 
-* 4个手动调用的方法
+4个手动调用的方法
 
 |  手动调用方法   |  作用   |
 | --- | --- |
@@ -53,7 +53,7 @@ Service生命周期图
 |  bindService()   |  绑定服务   |
 |  unbindService()   |  解绑服务   |
 
-* 5个自动调用的方法
+5个自动调用的方法
 
 |  内部自动调用的方法   |  作用   |
 | --- | --- |
@@ -63,7 +63,7 @@ Service生命周期图
 |  onBind()   |  绑定服务   |
 |  onUnbind()   |  解绑服务   |
 
-* 回调描述
+回调描述
 
 |  回调   |  描述   |
 | --- | --- |
@@ -79,9 +79,9 @@ Service生命周期图
 > 广播接收器用于响应来自其他应用程序或者系统的广播消息。这些消息有时被称为事件或者意图。  
 >例如，应用程序可以初始化广播来让其他的应用程序知道一些数据已经被下载到设备，并可以为他们所用。这样广播接收器可以定义适当的动作来拦截这些通信。
 
-有以下两个重要的步骤来使系统的广播意图配合广播接收器工作。
-* 创建广播接收器
-* 注册广播接收器  
+有以下两个重要的步骤来使系统的广播意图配合广播接收器工作。  
+创建广播接收器  
+注册广播接收器  
 还有一个附加的步骤，要实现自定义的意图，你必须创建并广播这些意图。
 
 ### 注册广播接收器 {docsify-ignore}
@@ -107,11 +107,13 @@ Service生命周期图
 ### 广播自定义意图 {docsify-ignore}
 ```java
 // 广播自定义意图
-public void broadcastIntent(View view){
-    Intent intent = new Intent();
-    intent.setAction("cn.programmer.CUSTOM_INTENT");
-    intent.setComponent(new ComponentName("cn.programmer","cn.programmer.MyReceiver"));
-    sendBroadcast(intent);
+public class Test{
+    public void broadcastIntent(View view){
+        Intent intent = new Intent();
+        intent.setAction("cn.programmer.CUSTOM_INTENT");
+        intent.setComponent(new ComponentName("cn.programmer","cn.programmer.MyReceiver"));
+        sendBroadcast(intent);
+    }
 }
 ```
 ### 创建广播接收器 {docsify-ignore}
@@ -156,10 +158,10 @@ public class MyReceiver extends BroadcastReceiver {
 ### 创建内容提供者 {docsify-ignore}
 这里描述创建自己的内容提供者的简单步骤。
 
-* 首先，你需要继承类 ContentProviderbase 来创建一个内容提供者类。
-* 其次，你需要定义用于访问内容的你的内容提供者URI地址。
-* 接下来，你需要创建数据库来保存内容。通常，Android 使用 SQLite 数据库，并在框架中重写 onCreate() 方法来使用 SQLiteOpenHelper 的方法创建或者打开提供者的数据库。当你的应用程序被启动，它的每个内容提供者的 onCreate() 方法将在应用程序主线程中被调用。
-* 最后，使用标签在 AndroidManifest.xml 中注册内容提供者。
+1、首先，你需要继承类 ContentProviderbase 来创建一个内容提供者类。  
+2、其次，你需要定义用于访问内容的你的内容提供者URI地址。  
+3、接下来，你需要创建数据库来保存内容。通常，Android 使用 SQLite 数据库，并在框架中重写 onCreate() 方法来使用 SQLiteOpenHelper 的方法创建或者打开提供者的数据库。当你的应用程序被启动，它的每个内容提供者的 onCreate() 方法将在应用程序主线程中被调用。  
+4、最后，使用标签在 AndroidManifest.xml 中注册内容提供者。  
 
 以下是让你的内容提供者正常工作，你需要在类 ContentProvider 中重写的一些方法：
 

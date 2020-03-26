@@ -16,8 +16,8 @@
 
 * **Android面试**
 * * [内存泄漏和性能优化](interview/内存泄漏和性能优化.md)
-* * [Service进程防杀](interview/Service进程防杀.md)
 * * [View事件分发](interview/View事件分发.md)
+* * [图片三级缓存](interview/图片三级缓存.md)
 * * [热更新原理及应用](interview/热更新原理及应用.md)
 * * [组件化和插件化应用](interview/组件化和插件化应用.md)
 * * [MVC-MVP-MVVM框架模式](interview/MVC-MVP-MVVM框架模式.md)
