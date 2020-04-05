@@ -12,6 +12,8 @@
 * * [进程和多线程](android/进程和多线程.md)
 * * [自定义控件](android/自定义控件.md)
 * * [AIDL进程间通信](android/AIDL进程间通信.md)
+* * [数据存储](android/数据存储.md)
+* * [引用类型](android/引用类型.md)
 * * [动画](android/动画.md)
 
 * **Android面试**
