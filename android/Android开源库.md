@@ -88,6 +88,11 @@
 
 [**ImmersionBar**](https://github.com/gyf-dev/ImmersionBar)<span>（好用）</span>
 
+**权限申请**
+
+[**PermissionsDispatcher**](https://github.com/permissions-dispatcher/PermissionsDispatcher)
+[**RxPermissions**](https://github.com/tbruyelle/RxPermissions)<span>（好用）</span>
+
 **工具类**
 
 [**AndroidUtilCode**](https://github.com/Blankj/AndroidUtilCode)<span>（Android开发人员不得不收集的代码）</span>
