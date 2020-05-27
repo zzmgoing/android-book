@@ -1,5 +1,8 @@
 # Android进阶学习总结
 
+注：本篇《Android进阶学习总结》来自拉勾教育[Android 工程师进阶 34 讲](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=67#/detail/pc?id=1855)  
+知识来自书中部分总结，如有想细读的同学可以购买该书。
+
 ## 一、JVM与DVM
 
 ### 1、JVM的内存分配
@@ -105,7 +108,7 @@ JVM 中自带 3 个类加载器：
 
 **举例说明**  
 
-```Test test = new Test();```  
+```Test code = new Test();```  
 
 默认情况下，JVM 首先使用 AppClassLoader 去加载 Test 类。  
 ①AppClassLoader 将加载的任务委派给它的父类加载器（parent）—ExtClassLoader。  

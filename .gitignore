@@ -3,3 +3,5 @@
 /.idea
 /.github
 /.git
+/.out
+*.class
