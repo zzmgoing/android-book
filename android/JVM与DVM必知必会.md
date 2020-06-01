@@ -1,11 +1,9 @@
-# Android进阶学习总结
+# JVM与DVM必知必会
 
-注：本篇《Android进阶学习总结》来自拉勾教育[Android 工程师进阶 34 讲](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=67#/detail/pc?id=1855)  
+注：本篇《Android进阶》来自拉勾教育[Android 工程师进阶 34 讲](https://kaiwu.lagou.com/course/courseInfo.htm?courseId=67#/detail/pc?id=1855)  
 知识来自书中部分总结，如有想细读的同学可以购买该书。
 
-## 一、JVM与DVM
-
-### 1、JVM的内存分配
+## 1、JVM的内存分配
 
 Java 虚拟机在执行 Java 程序的过程中，会把它所管理的内存划分为不同的数据区域。下面这张图描述了一个 HelloWorld.java 文件被 JVM 加载到内存中的过程：
 
@@ -26,7 +24,7 @@ JVM内存中只有**堆**和**方法区**是线程共享的数据区域，其它
 **注意：**  
 对于 JVM 运行时内存布局，我们需要始终记住一点：上面介绍的这 5 块内容都是在 Java 虚拟机规范中定义的规则，这些规则只是描述了各个区域是负责做什么事情、存储什么样的数据、如何处理异常、是否允许线程间共享等。千万不要将它们理解为虚拟机的“具体实现”，虚拟机的具体实现有很多，比如 Sun 公司的 HotSpot、JRocket、IBM J9、以及我们非常熟悉的 Android Dalvik 和 ART 等。这些具体实现在符合上面 5 种运行时数据区的前提下，又各自有不同的实现方式。
 
-### 2、GC回收机制和分代回收策略
+## 2、GC回收机制和分代回收策略
 
 垃圾回收指的是JVM回收内存中已经没有用的对象（垃圾）。
 
@@ -34,7 +32,27 @@ JVM内存中只有**堆**和**方法区**是线程共享的数据区域，其它
 1、Allocation Failure：在堆内存中分配时，如果因为可用剩余空间不足导致对象内存分配失败，这时系统会触发一次 GC。  
 2、System.gc()：在应用层，Java 开发工程师可以主动调用此 API 来请求一次 GC。
 
-垃圾收集算法：**标记清除算法（Mark and Sweep GC）**、**复制算法（Copying）**、**标记-压缩算法 (Mark-Compact)**。
+**如何识别垃圾：**  
+
+JVM通过**可达性分析算法**来标识垃圾，首先通过GC Root作为起始点，然后向下进行搜索，搜索所走过的路径称为引用链，最后通过判断对象的引用链是否可达来决定对象是否可以被回收。
+
+**可以作为GC Root的对象：**  
+
+1、Java 虚拟机栈（局部变量表）中的引用的对象。  
+2、方法区中静态引用指向的对象。  
+3、仍处于存活状态中的线程对象。  
+4、Native 方法中 JNI 引用的对象。  
+
+**如何回收垃圾** （通过垃圾回收算法）
+
+1、标记清除算法（Mark and Sweep GC）  
+<span>从”GC Roots”集合开始，将内存整个遍历一次，保留所有可以被GC Roots直接或间接引用到的对象，而剩下的对象都当作垃圾对待并回收。</span>
+
+2、复制算法（Copying）  
+<span>将现有的内存空间分为两快，每次只使用其中一块，在垃圾回收时将正在使用的内存中的存活对象复制到未被使用的内存块中。之后，清除正在使用的内存块中的所有对象，交换两个内存的角色，完成垃圾回收。</span>
+
+3、标记-压缩算法 (Mark-Compact)  
+<span>需要先从根节点开始对所有可达对象做一次标记，之后，它并不简单地清理未标记的对象，而是将所有的存活对象压缩到内存的一端。最后，清理边界外所有的空间。</span>
 
 **JVM分代回收策略**：  
 
@@ -51,14 +69,14 @@ Java 虚拟机根据对象存活的周期不同，把堆内存划分为几块，
 
 Android中软引用使用较多，但是不当的使用也会导致异常，比如软引用被强引用持有而频繁回收。
 
-### 3、class类文件结构
+## 3、class类文件结构
 
 ![class](https://img.upyun.zzming.cn/android/class_jg.png)
 
 String字符串的长度：  
 我们在java代码中声明的String字符串最终在class文件中的存储格式就 CONSTANT_utf8_info。因此一个字符串最大长度也就是u2所能代表的最大值65536个，但是需要使用2个字节来保存 null 值，因此一个字符串的最大长度为 65536 - 2 = 65534。
 
-### 4、编译插桩
+## 4、编译插桩操作字节码
 
 顾名思义，所谓编译插桩就是在代码编译期间修改已有的代码或者生成新代码。实际上，我们项目中经常用到的 Dagger、ButterKnife 甚至是 Kotlin 语言，它们都用到了编译插桩的技术。
 
@@ -87,7 +105,7 @@ AspectJ 是老牌 AOP（Aspect-Oriented Programming）框架，如果你做过 J
 ③ 使用ASM框架，插入字节码到Activity文件中  
 ④ 将自定义Transform注册到Gradle插件中，部署插件并运行项目
 
-### 5、类加载器ClassLoader
+## 5、类加载器ClassLoader加载机制
 
 在 Java 程序启动的时候，并不会一次性加载程序中所有的 .class 文件，而是在程序的运行过程中，动态地加载相应的类到内存中。
 
@@ -168,7 +186,7 @@ public DexClassLoader(String dexPath,String optimizedDirectory,String libraryPat
 ③可以自定义 ClassLoader，一般覆盖 findClass() 方法，不建议重写 loadClass 方法。  
 ④Android 中常用的两种 ClassLoader 分别为：PathClassLoader 和 DexClassLoader。  
 
-### 6、class类的加载过程
+## 6、class类的加载过程
 
  .class 文件被加载到内存中所经过的详细过程，主要分 3 大步：**装载**、**链接**、**初始化**。其中链接中又包含验证、准备、解析 3 小步。
  
@@ -195,7 +213,7 @@ public DexClassLoader(String dexPath,String optimizedDirectory,String libraryPat
  ⑤ 子类普通成员变量和普通代码块；  
  ⑥ 子类的构造函数。  
  
- ### 7、Java内存模型与线程
+ ## 7、Java内存模型与线程
  
  Java 内存模型的来源：主要是因为 CPU 缓存和指令重排等优化会造成多线程程序结果不可控。
  
@@ -203,7 +221,7 @@ public DexClassLoader(String dexPath,String optimizedDirectory,String libraryPat
  
  最后介绍了 Java 内存模型的使用，其中简单介绍了两种方式：**volatile** 和 **synchronized**。其实除了这两种方式，Java 还提供了很多关键字来实现 happens-before 原则，后续课时中将会详细介绍。 
  
- ### 8、Synchronized 和 ReentrantLock
+ ## 8、Synchronized 和 ReentrantLock
  
  **synchronized**
  
@@ -229,3 +247,83 @@ ReentrantLock 的使用同 synchronized 有点不同，它的加锁和解锁操�
 这课时我们主要学习了 Java 中两个实现同步的方式 synchronized 和 ReentrantLock。其中 synchronized 使用更简单，加锁和释放锁都是由虚拟机自动完成，而 ReentrantLock 需要开发者手动去完成。但是很显然 ReentrantLock 的使用场景更多，公平锁（**ReentrantLock(true)**）还有读写锁（**ReentrantReadWriteLock**）都可以在复杂场景中发挥重要作用。
 
 
+## 9、Java 线程优化 偏向锁，轻量级锁、重量级锁
+
+```java
+private Object lock = new Object();
+
+public void syncMethod(){
+    synchronized(lock){
+    }
+}
+```
+锁对象是 lock 对象，在 JVM 中会有一个 ObjectMonitor 对象（通过对象头生成）与之对应。
+
+多个线程进入ObjectMonitor的EntrySet中；  
+线程获得锁，ObjectMonitor的Owner指向该线程，count++；  
+线程被挂起，进入ObjectMonitor的WaitSet等待中，count --；    
+
+**Java 虚拟机对 synchronized 的优化**：  
+
+从 Java 6 开始，虚拟机对 synchronized 关键字做了多方面的优化，主要目的就是，避免 ObjectMonitor 的访问，减少“重量级锁”的使用次数，并最终减少线程上下文切换的频率 。其中主要做了以下几个优化： **锁自旋、轻量级锁、偏向锁**。  
+
+**锁自旋**
+
+所谓自旋，就是让该线程等待一段时间，不会被立即挂起，看当前持有锁的线程是否会很快释放锁。而所谓的等待就是执行一段无意义的循环即可（自旋）。  
+<span>自旋锁也存在一定的缺陷：自旋锁要占用 CPU，如果锁竞争的时间比较长，那么自旋通常不能获得锁，白白浪费了自旋占用的 CPU 时间。这通常发生在锁持有时间长，且竞争激烈的场景中，此时应主动禁用自旋锁。</span>
+
+**轻量级锁**
+
+1、当线程执行某同步代码时，Java 虚拟机会在当前线程的栈帧中开辟一块空间（Lock Record）作为该锁的记录,  
+2、然后 Java 虚拟机会尝试使用 CAS（Compare And Swap）操作，将锁对象的 Mark Word 拷贝到这块空间中，并且将锁记录中的 owner 指向 Mark Word。  
+3、当线程再次执行此同步代码块时，判断当前对象的 Mark Word 是否指向当前线程的栈帧，如果是则表示当前线程已经持有当前对象的锁，则直接执行同步代码块；否则只能说明该锁对象已经被其他线程抢占了，这时轻量级锁需要膨胀为重量级锁。  
+<span>轻量级锁所适应的场景是线程交替执行同步块的场合，如果存在同一时间访问同一锁的场合，就会导致轻量级锁膨胀为重量级锁。</span>
+
+**偏向锁**
+
+偏向锁的意思是如果一个线程获得了一个偏向锁，如果在接下来的一段时间中没有其他线程来竞争锁，那么持有偏向锁的线程再次进入或者退出同一个同步代码块，不需要再次进行抢占锁和释放锁的操作。  
+<span>偏向锁的具体实现就是在锁对象的对象头中有个 ThreadId 字段，默认情况下这个字段是空的，当第一次获取锁的时候，就将自身的 ThreadId 写入锁对象的 Mark Word 中的 ThreadId 字段内，将是否偏向锁的状态置为 01。这样下次获取锁的时候，直接检查 ThreadId 是否和自身线程 Id 一致，如果一致，则认为当前线程已经获取了锁，因此不需再次获取锁，略过了轻量级锁和重量级锁的加锁阶段。提高了效率。</span>
+
+**总结**：
+
+本课时主要介绍了 Java 中锁的几种状态，其中偏向锁和轻量级锁都是通过自旋等技术避免真正的加锁，而重量级锁才是获取锁和释放锁，重量级锁通过对象内部的监视器（ObjectMonitor）实现，其本质是依赖于底层操作系统的 Mutex Lock 实现，操作系统实现线程之间的切换需要从用户态到内核态的切换，成本非常高。实际上Java对锁的优化还有”锁消除“，但是”锁消除“是基于Java对象逃逸分析的，如果对此感兴趣可以查阅 Java 逃逸分析 这篇文章。
+
+## 10、深入理解 AQS 和 CAS 原理
+
+**总结**
+
+总体来说，AQS 是一套框架，在框架内部已经封装好了大部分同步需要的逻辑，在 AQS 内部维护了一个状态指示器 state 和一个等待队列 Node，而通过 state 的操作又分为两种：独占式和共享式，这就导致 AQS 有两种不同的实现：独占锁（ReentrantLock 等）和分享锁（CountDownLatch、读写锁等）。本课时主要从独占锁的角度深入分析了 AQS 的加锁和释放锁的流程。
+
+理解 AQS 的原理对理解 JUC 包中其他组件实现的基础有帮助，并且理解其原理才能更好的扩展其功能。上层开发人员可以基于此框架基础上进行扩展实现适合不同场景、不同功能的锁。其中几个有可能需要子类同步器实现的方法如下。
+
+1、lock()。  
+2、tryAcquire(int)：独占方式。尝试获取资源，成功则返回 true，失败则返回 false。  
+3、tryRelease(int)：独占方式。尝试释放资源，成功则返回 true，失败则返回 false。  
+4、tryAcquireShared(int)：共享方式。尝试获取资源。负数表示失败；0 表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。  
+5、tryReleaseShared(int)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回 true，否则返回 false。  
+
+**CAS 全称是 Compare And Swap，译为比较和替换，是一种通过硬件实现并发安全的常用技术**，底层通过利用 CPU 的 CAS 指令对缓存加锁或总线加锁的方式来实现多处理器之间的原子操作。
+
+它的实现过程主要有 3 个操作数：内存值 V，旧的预期值 E，要修改的新值 U，当且仅当预期值 E和内存值 V 相同时，才将内存值 V 修改为 U，否则什么都不做。
+
+CAS 底层会根据操作系统和处理器的不同来选择对应的调用代码，以 Windows 和 X86 处理器为例，如果是多处理器，通过带 lock 前缀的 cmpxchg 指令对缓存加锁或总线加锁的方式来实现多处理器之间的原子操作；如果是单处理器，通过 cmpxchg 指令完成原子操作。
+
+## 11、线程池之刨根问底
+
+线程池主要解决两个问题：  
+一、 当执行大量异步任务时线程池能够提供很好的性能。  
+二、 线程池提供了一种资源限制和管理的手段，比如可以限制线程的个数，动态新增线程等。  
+
+**线程池体系**  
+
+![thread](https://img.upyun.zzming.cn/android/thread_pool.png)
+
+1、Executor 是线程池最顶层的接口，在 Executor 中只有一个 execute 方法，用于执行任务。至于线程的创建、调度等细节由子类实现。  
+2、ExecutorService 继承并拓展了 Executor，在 ExecutorService 内部提供了更全面的任务提交机制以及线程池关闭方法。  
+3、ThreadPoolExecutor 是 ExecutorService 的默认实现，所谓的线程池机制也大多封装在此类当中，因此它是本课时分析的重点。  
+4、ScheduledExecutorService 继承自 ExecutorService，增加了定时任务相关方法。  
+5、ScheduledThreadPoolExecutor 继承自 ThreadPoolExecutor，并实现了 ScheduledExecutorService 接口。  
+6、ForkJoinPool 是一种支持任务分解的线程池，一般要配合可分解任务接口 ForkJoinTask 来使用。  
+
+
+## 12、DVM 以及 ART 是如何对 JVM 进行优化的？

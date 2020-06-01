@@ -42,5 +42,11 @@
 onInterceptTouchEvent()方法判断是否拦截该事件，默认false不拦截，事件传递到View的dispatchTouchEvent()方法，然后View会调用自身的
 onTouchEvent()方法来消费事件，如果没有消费事件则会回传给上层的onTouchEvent()方法来处理。
 
+## 解决子控件事件被拦截
+
+1、在子控件的dispatchTouchEvent()或onInterceptTouchEvent()方法中ACTION_DOWN的时候调用**getParent().requestDisallowInterceptTouchEvent(true)**方法请求父类不要拦截事件，然后自己做处理。
+
+在ACTION_UP或ACTION_CANCEL的时候调用requestDisallowInterceptTouchEvent(false);
+
 > [面试：讲讲 Android 的事件分发机制](https://www.jianshu.com/p/d3758eef1f72)  
 > [Android事件分发机制详解：史上最全面、最易懂](https://www.jianshu.com/p/38015afcdb58)
