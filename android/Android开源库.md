@@ -92,6 +92,7 @@
 
 [**PermissionsDispatcher**](https://github.com/permissions-dispatcher/PermissionsDispatcher)
 [**RxPermissions**](https://github.com/tbruyelle/RxPermissions)<span>（好用）</span>
+[**PermissionX**](https://github.com/guolindev/PermissionX)<span>（郭神出品）</span>
 
 **工具类**
 
