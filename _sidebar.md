@@ -25,6 +25,10 @@
 * **Android面试**
 * * [View事件分发](interview/View事件分发.md)
 * * [图片三级缓存](interview/图片三级缓存.md)
+* * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
+* * [Activity、Window、View关系](interview/Activity、Window、View关系.md)
+* * [ListView、RecyclerView缓存机制](interview/ListView、RecyclerView缓存机制.md)
+* * [Gradle打包流程](interview/Gradle打包流程.md)
 * * [热更新原理及应用](interview/热更新原理及应用.md)
 * * [内存泄漏和性能优化](interview/内存泄漏和性能优化.md)
 * * [组件化和插件化应用](interview/组件化和插件化应用.md)
