@@ -1,0 +1,3 @@
+# ARouter
+
+ARouter会在项目的编译期通过注解处理器扫描所有添加@Route注解的Activity类，然后将Route注解中的path地址和Activity.class文件映射关系保存到它自己生成的java文件中。  
