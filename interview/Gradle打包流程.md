@@ -2,11 +2,16 @@
 
 大概分为以下几个步骤： 
  
-1、使用aapt工具将res资源文件生成R.java文件  
-2、使用aidl工具将aidl文件生成对应java文件  
-3、使用javac命令编译工程源代码和上面两步生成的文件，生成class文件  
-使用proguard进行资源优化和混淆（可选）  
-4、通过dex工具将class文件和第三方jar包打成dex文件  
-5、用aapt工具将res下的资源文件编译成二进制文件，然后将其和上一步中的dex文件以及assets中的文件通过apkbuilder工具打包成apk文件  
-6、通过jarSigner对apk进行签名  
-7、利用zipalign工具对apk进行字节对齐优化操作
+1、通过AAPT工具对资源文件（包括AndroidManifest.xml、布局文件、各种xml资源等）进行打包，生成R.java文件
+
+2、通过AIDL工具处理AIDL文件，生成相应的Java文件
+
+3、使用Javac命令编译工程源代码和上面两步生成的文件，生成class文件(开启混淆会使用proguard进行资源优化和混淆）
+
+4、通过Dex工具将Class文件和第三方Jar包打成dex文件（该过程主要完成Java字节码转换成Dalvik字节码，压缩常量池以及清除冗余信息等工作）
+
+5、用AAPT工具将res下的资源文件编译成二进制文件，然后将其和上一步中的dex文件以及assets中的文件通过ApkBuilder工具打包成apk文件
+
+6、通过KeyStore对Apk进行签名
+
+7、利用ZipAlign工具对apk进行字节对齐优化操作（对齐的过程就是将APK文件中所有的资源文件举例文件的起始距离都偏移4字节的整数倍，这样通过内存映射访问APK文件的速度会更快）
