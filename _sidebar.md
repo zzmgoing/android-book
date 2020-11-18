@@ -1,6 +1,23 @@
 * **Java**
-* * [基础知识](java/基础知识.md)
+* * [TCP和UDP](java/TCP和UDP.md)
+* * [Http和Https](java/Http和Https.md)
+* * [JDK1.8的特性](java/JDK1.8的特性.md)
+* * [数据类型](java/数据类型.md)
+* * [JVM加载机制](java/JVM加载机制.md)
 * * [数据结构与算法](java/数据结构与算法.md)
+* * [数组和链表的区别](java/数组和链表的区别.md)
+* * [二叉树、平衡二叉树、红黑树](java/二叉树、平衡二叉树、红黑树.md)
+* * [String、StringBuilder、StringBuffer](java/String、StringBuilder、StringBuffer.md)
+* * [多线程三个特性](java/多线程三个特性.md)
+* * [Java线程状态和各种锁的区别](java/Java线程状态和各种锁的区别.md)
+* * [Synchronized和volatile、ReentrantLock、CAS](java/Synchronized和volatile、ReentrantLock、CAS.md)
+* * [死锁产生条件，死锁应对策略](java/死锁产生条件，死锁应对策略.md)
+* * [final、finally、finalize区别](java/final、finally、finalize区别.md)
+* * [equals()方法和==相同吗，有什么区别](java/equals()方法和==相同吗，有什么区别.md)
+* * [Exception和Error有什么区别](java/Exception和Error有什么区别.md)
+* * [四大引用类型](java/四大引用类型.md)
+* * [IO流](java/IO流.md)
+* * [数据库事务](java/数据库事务.md)
 * * [常用设计模式](java/常用设计模式.md)
 
 * **Android**
@@ -16,12 +33,6 @@
 * * [View绘制流程](android/View绘制流程.md)
 * * [进程和多线程](android/进程和多线程.md)
 * * [数据存储](android/数据存储.md)
-
-* **Android进阶**
-* * [JVM与DVM必知必会](android/JVM与DVM必知必会.md)
-* * [Android核心技术](android/Android核心技术.md)
-* * [Android源码分析](android/Android源码分析.md)
-* * [实战常见问题剖析](android/实战常见问题剖析.md)
 
 * **Android框架**
 * * [OKHttp](frame/OKHttp.md)

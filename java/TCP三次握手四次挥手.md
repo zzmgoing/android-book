@@ -1,4 +1,4 @@
-[&lArr;基础知识-TCP和UDP](/java/基础知识.md?id=tcp和udp)
+[&lArr;TCP和UDP](/java/TCP和UDP.md)
 
 # TCP三次握手四次挥手
 
