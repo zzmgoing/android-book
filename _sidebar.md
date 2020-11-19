@@ -1,24 +1,13 @@
 * **Java**
 * * [TCP和UDP](java/TCP和UDP.md)
-* * [Http和Https](java/Http和Https.md)
-* * [JDK1.8的特性](java/JDK1.8的特性.md)
+* * [HTTP和HTTPS](java/HTTP和HTTPS.md)
+* * [Java特点及特性](java/Java特点及特性.md)
 * * [数据类型](java/数据类型.md)
-* * [JVM加载机制](java/JVM加载机制.md)
-* * [数据结构与算法](java/数据结构与算法.md)
-* * [数组和链表的区别](java/数组和链表的区别.md)
-* * [二叉树、平衡二叉树、红黑树](java/二叉树、平衡二叉树、红黑树.md)
-* * [String、StringBuilder、StringBuffer](java/String、StringBuilder、StringBuffer.md)
-* * [多线程三个特性](java/多线程三个特性.md)
-* * [Java线程状态和各种锁的区别](java/Java线程状态和各种锁的区别.md)
-* * [Synchronized和volatile、ReentrantLock、CAS](java/Synchronized和volatile、ReentrantLock、CAS.md)
-* * [死锁产生条件，死锁应对策略](java/死锁产生条件，死锁应对策略.md)
-* * [final、finally、finalize区别](java/final、finally、finalize区别.md)
-* * [equals()方法和==相同吗，有什么区别](java/equals()方法和==相同吗，有什么区别.md)
-* * [Exception和Error有什么区别](java/Exception和Error有什么区别.md)
 * * [四大引用类型](java/四大引用类型.md)
 * * [IO流](java/IO流.md)
+* * [JVM加载机制](java/JVM加载机制.md)
+* * [线程、多线程、锁](java/线程、多线程、锁.md)
 * * [数据库事务](java/数据库事务.md)
-* * [常用设计模式](java/常用设计模式.md)
 
 * **Android**
 * * [Android架构](android/Android架构.md)
@@ -34,20 +23,11 @@
 * * [进程和多线程](android/进程和多线程.md)
 * * [数据存储](android/数据存储.md)
 
-* **Android框架**
-* * [OKHttp](frame/OKHttp.md)
-* * [Retrofit](frame/Retrofit.md)
-* * [RxJava](frame/RxJava.md)
-* * [ARouter](frame/ARouter.md)
-* * [Glide](frame/Glide.md)
-
-* **算法锦集**
-* * [数组](algorithm/数组.md)
-* * [链表](algorithm/链表.md)
-* * [二叉树](algorithm/二叉树.md)
-* * [字符串](algorithm/字符串.md)
-
 * **Android面试**
+* * [equals方法和==的区别](interview/equals方法和==的区别.md)
+* * [String、StringBuilder、StringBuffer区别](interview/String、StringBuilder、StringBuffer区别.md)
+* * [final、finally、finalize区别](interview/final、finally、finalize区别.md)
+* * [Exception和Error有什么区别](interview/Exception和Error有什么区别.md)
 * * [View事件分发](interview/View事件分发.md)
 * * [图片三级缓存](interview/图片三级缓存.md)
 * * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
@@ -60,8 +40,29 @@
 * * [组件化和插件化应用](interview/组件化和插件化应用.md)
 * * [MVC-MVP-MVVM框架模式](interview/MVC-MVP-MVVM框架模式.md)
 
+* **Android开源库**
+* * [OKHttp](frame/OKHttp.md)
+* * [Retrofit](frame/Retrofit.md)
+* * [RxJava](frame/RxJava.md)
+* * [ARouter](frame/ARouter.md)
+* * [Glide](frame/Glide.md)
+
+* **数据结构与算法**
+* * [数据结构](java/数据结构.md)
+* * [算法](java/算法.md)
+
+* **算法锦集**
+* * [数组](algorithm/数组.md)
+* * [链表](algorithm/链表.md)
+* * [二叉树](algorithm/二叉树.md)
+* * [字符串](algorithm/字符串.md)
+
+* [**常用设计模式**](java/常用设计模式.md)
+
 * [**Kotlin**](android/Kotlin.md)
 
 * [**Flutter**](android/Flutter.md)
+
+* [**Android版本适配**](android/Android版本适配.md)
 
 * [**Android开源库**](android/Android开源库.md)
