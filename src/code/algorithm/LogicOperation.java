@@ -1,4 +1,4 @@
-package code;
+package code.algorithm;
 
 import java.util.ArrayList;
 import java.util.Collections;

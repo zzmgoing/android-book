@@ -4,8 +4,10 @@
 * * [Java特点及特性](java/Java特点及特性.md)
 * * [数据类型](java/数据类型.md)
 * * [四大引用类型](java/四大引用类型.md)
-* * [IO流](java/IO流.md)
-* * [JVM加载机制](java/JVM加载机制.md)
+* * [JVM的内存分配](java/JVM的内存分配.md)
+* * [ClassLoader加载机制](java/ClassLoader加载机制.md)
+* * [Class类的加载过程](java/Class类的加载过程.md)
+* * [GC回收机制](java/GC回收机制.md)
 * * [线程、多线程、锁](java/线程、多线程、锁.md)
 * * [数据库事务](java/数据库事务.md)
 
@@ -28,9 +30,9 @@
 * * [String、StringBuilder、StringBuffer区别](interview/String、StringBuilder、StringBuffer区别.md)
 * * [final、finally、finalize区别](interview/final、finally、finalize区别.md)
 * * [Exception和Error有什么区别](interview/Exception和Error有什么区别.md)
+* * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
 * * [View事件分发](interview/View事件分发.md)
 * * [图片三级缓存](interview/图片三级缓存.md)
-* * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
 * * [Activity、Window、View关系](interview/Activity、Window、View关系.md)
 * * [ListView、RecyclerView缓存机制](interview/ListView、RecyclerView缓存机制.md)
 * * [Gradle打包流程](interview/Gradle打包流程.md)
@@ -51,7 +53,7 @@
 * * [数据结构](java/数据结构.md)
 * * [算法](java/算法.md)
 
-* **算法锦集**
+* **算法锦集(高频)**
 * * [数组](algorithm/数组.md)
 * * [链表](algorithm/链表.md)
 * * [二叉树](algorithm/二叉树.md)
