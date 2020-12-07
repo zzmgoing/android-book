@@ -2,5 +2,5 @@
 
 Activity-PhoneWindow-DecorView 
 
-一个Activity对应一个Window也就是PhoneWindow，一个PhoneWindow持有一个DecorView的实例，DecorView本身是一个FrameLayout。  
+一个Activity对应一个Window对象，也就是PhoneWindow的实现，一个PhoneWindow持有一个DecorView的实例，DecorView本身是一个FrameLayout。  
 Window是Android中窗口的宏观定义，主要是管理View的创建，以及与ViewRootImpl的交互，将Activity与View解耦。

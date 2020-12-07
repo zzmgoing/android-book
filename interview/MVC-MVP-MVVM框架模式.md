@@ -19,7 +19,7 @@ MVP (Model-View-Presenter) 是MVC的演化版本，几个主要部分如下：
 
 模型层 (Model)：主要提供数据存取功能。  
 视图层 (View)：处理用户事件和视图。在Android中，可能是指Activity、Fragment或者View。  
-展示层 (Presenter)：负责通过Model存取书数据，连接View和Model，从Model中取出数据交给View。  
+展示层 (Presenter)：负责通过Model存取数据，连接View和Model，从Model中取出数据交给View。  
 
 1、这里的Model是用来存取数据的，也就是用来从指定的数据源中获取数据，不要将其理解成MVC中的Model。在MVC中Model是数据模型，在MVP中，我们用Bean来表示数据模型。  
 2、Model和View不会直接发生关系，它们需要通过Presenter来进行交互。在实际的开发中，我们可以用接口来定义一些规范，然后让我们的View和Model实现它们，并借助Presenter进行交互即可。
@@ -44,9 +44,7 @@ MVP (Model-View-Presenter) 是MVC的演化版本，几个主要部分如下：
 
 **缺点**
 
-①Presenter中除了应用逻辑以外，还有大量的View->Model，Model->View的手动同步逻辑，造成Presenter比较笨重，维护起来会比较困难；  
-②由于对视图的渲染放在了Presenter中，所以视图和Presenter的交互会过于频繁；  
-③如果Presenter过多地渲染了视图，往往会使得它与特定的视图的联系过于紧密，一旦视图需要变更，那么Presenter也需要变更了。  
+首先就是代码量大大增加了，每个页面或者说功能点，都要专门写一个Presenter类，并且由于是面向接口编程，需要增加大量接口，会有大量繁琐的回调。其次，由于Presenter里持有了Activity对象，所以可能会导致内存泄漏或者view空指针，这也是需要注意的地方。  
 
 ## MVVM
 

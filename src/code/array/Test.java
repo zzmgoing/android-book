@@ -13,6 +13,8 @@ public class Test {
         System.out.println("买卖股票的最佳时机："+maxProfit(new int[]{7,1,5,3,6,4}));
         System.out.println("爬楼梯："+climbStairs(3));
         System.out.println("删除排序数组中的重复项："+removeDuplicates(new int[]{0,0,1,1,1,2,2,3,3,4}));
+
+
     }
 
 

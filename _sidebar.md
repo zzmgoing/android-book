@@ -9,7 +9,7 @@
 * * [Class类的加载过程](java/Class类的加载过程.md)
 * * [GC回收机制](java/GC回收机制.md)
 * * [线程、多线程、锁](java/线程、多线程、锁.md)
-* * [数据库事务](java/数据库事务.md)
+* * [数据库索引和事务](java/数据库索引和事务.md)
 
 * **Android**
 * * [Android架构](android/Android架构.md)
@@ -26,15 +26,17 @@
 * * [数据存储](android/数据存储.md)
 
 * **Android面试**
+* * [对称加密和非对称加密](interview/对称加密和非对称加密.md)
 * * [equals方法和==的区别](interview/equals方法和==的区别.md)
 * * [String、StringBuilder、StringBuffer区别](interview/String、StringBuilder、StringBuffer区别.md)
 * * [final、finally、finalize区别](interview/final、finally、finalize区别.md)
 * * [Exception和Error有什么区别](interview/Exception和Error有什么区别.md)
 * * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
-* * [View事件分发](interview/View事件分发.md)
-* * [图片三级缓存](interview/图片三级缓存.md)
 * * [Activity、Window、View关系](interview/Activity、Window、View关系.md)
+* * [View事件分发](interview/View事件分发.md)
 * * [ListView、RecyclerView缓存机制](interview/ListView、RecyclerView缓存机制.md)
+* * [SharedPreferences的安全](interview/SharedPreferences的安全.md)
+* * [LruCache缓存机制](interview/LruCache缓存机制.md)
 * * [Gradle打包流程](interview/Gradle打包流程.md)
 * * [APK安装流程](interview/APK安装流程.md)
 * * [热更新原理及应用](interview/热更新原理及应用.md)
@@ -44,7 +46,7 @@
 
 * **Android开源库**
 * * [OKHttp](frame/OKHttp.md)
-* * [Retrofit](frame/Retrofit.md)
+* * [Eventbus](frame/Eventbus.md)
 * * [RxJava](frame/RxJava.md)
 * * [ARouter](frame/ARouter.md)
 * * [Glide](frame/Glide.md)
@@ -58,6 +60,7 @@
 * * [链表](algorithm/链表.md)
 * * [二叉树](algorithm/二叉树.md)
 * * [字符串](algorithm/字符串.md)
+* * [队列](algorithm/队列.md)
 
 * [**常用设计模式**](java/常用设计模式.md)
 
