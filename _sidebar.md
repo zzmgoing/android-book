@@ -37,6 +37,7 @@
 * * [ListView、RecyclerView缓存机制](interview/ListView、RecyclerView缓存机制.md)
 * * [SharedPreferences的安全](interview/SharedPreferences的安全.md)
 * * [LruCache缓存机制](interview/LruCache缓存机制.md)
+* * [Hook技术原理](interview/Hook技术原理.md)
 * * [Gradle打包流程](interview/Gradle打包流程.md)
 * * [APK安装流程](interview/APK安装流程.md)
 * * [热更新原理及应用](interview/热更新原理及应用.md)
@@ -46,7 +47,7 @@
 
 * **Android开源库**
 * * [OKHttp](frame/OKHttp.md)
-* * [Eventbus](frame/Eventbus.md)
+* * [EventBus](frame/EventBus.md)
 * * [RxJava](frame/RxJava.md)
 * * [ARouter](frame/ARouter.md)
 * * [Glide](frame/Glide.md)
