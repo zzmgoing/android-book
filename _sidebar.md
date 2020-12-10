@@ -4,10 +4,10 @@
 * * [Java特点及特性](java/Java特点及特性.md)
 * * [数据类型](java/数据类型.md)
 * * [四大引用类型](java/四大引用类型.md)
-* * [JVM的内存分配](java/JVM的内存分配.md)
-* * [ClassLoader加载机制](java/ClassLoader加载机制.md)
+* * [<span class="red-font">JVM的内存分配</span>](java/JVM的内存分配.md)
+* * [<span class="red-font">ClassLoader加载机制</span>](java/ClassLoader加载机制.md)
 * * [Class类的加载过程](java/Class类的加载过程.md)
-* * [GC回收机制](java/GC回收机制.md)
+* * [<span class="red-font">GC回收机制</span>](java/GC回收机制.md)
 * * [线程、多线程、锁](java/线程、多线程、锁.md)
 * * [数据库索引和事务](java/数据库索引和事务.md)
 
@@ -18,10 +18,9 @@
 * * [BroadcastReceiver](android/BroadcastReceiver.md)
 * * [ContentProvider](android/ContentProvider.md)
 * * [Animation动画](android/Animation动画.md)
-* * [Handler机制](android/Handler机制.md)
-* * [Binder机制](android/Binder机制.md)
+* * [<span class="red-font">Handler机制</span>](android/Handler机制.md)
+* * [<span class="red-font">Binder机制</span>](android/Binder机制.md)
 * * [AIDL进程间通信](android/AIDL进程间通信.md)
-* * [View绘制流程](android/View绘制流程.md)
 * * [进程和多线程](android/进程和多线程.md)
 * * [数据存储](android/数据存储.md)
 
@@ -32,18 +31,21 @@
 * * [final、finally、finalize区别](interview/final、finally、finalize区别.md)
 * * [Exception和Error有什么区别](interview/Exception和Error有什么区别.md)
 * * [Serializable，Parcelable区别](interview/Serializable，Parcelable区别.md)
-* * [Activity、Window、View关系](interview/Activity、Window、View关系.md)
-* * [View事件分发](interview/View事件分发.md)
+* * [<span class="red-font">Activity、Window、View关系</span>](interview/Activity、Window、View关系.md)
+* * [<span class="red-font">View事件分发</span>](interview/View事件分发.md)
+* * [<span class="red-font">View绘制流程</span>](android/View绘制流程.md)
+* * [<span class="red-font">Activity获取View宽高</span>](interview/Activity获取View宽高.md)
 * * [ListView、RecyclerView缓存机制](interview/ListView、RecyclerView缓存机制.md)
 * * [SharedPreferences的安全](interview/SharedPreferences的安全.md)
 * * [LruCache缓存机制](interview/LruCache缓存机制.md)
-* * [Hook技术原理](interview/Hook技术原理.md)
-* * [Gradle打包流程](interview/Gradle打包流程.md)
+* * [<span class="red-font">Gradle构建/打包流程</span>](interview/Gradle构建和打包流程.md)
 * * [APK安装流程](interview/APK安装流程.md)
 * * [热更新原理及应用](interview/热更新原理及应用.md)
-* * [内存泄漏和性能优化](interview/内存泄漏和性能优化.md)
+* * [<span class="red-font">内存泄漏和性能优化</span>](interview/内存泄漏和性能优化.md)
 * * [组件化和插件化应用](interview/组件化和插件化应用.md)
 * * [MVC-MVP-MVVM框架模式](interview/MVC-MVP-MVVM框架模式.md)
+* * [APT和AOP](interview/APT和AOP.md)
+* * [Hook技术原理](interview/Hook技术原理.md)
 
 * **Android开源库**
 * * [OKHttp](frame/OKHttp.md)
@@ -67,7 +69,7 @@
 
 * [**Kotlin**](android/Kotlin.md)
 
-* [**Flutter**](android/Flutter.md)
+* [<span class="red-font">**Flutter**</span>](android/Flutter.md)
 
 * [**Android版本适配**](android/Android版本适配.md)
 

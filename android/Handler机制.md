@@ -17,6 +17,10 @@
 2、Looper通过loop()不断地从MessageQueue中循环读取Message，然后调用Message的target，即附属Handler的dispatchMessage()方法来分发消息。  
 3、最终Handler将消息回调到自身的handleMessage()中来处理Message，完成UI操作。
 
+**消息队列MessageQueue数据结构**
+
+MessageQueue内部持有一个Message对象，采用**单项链表**的形式来维护消息列队。并且提供了入队，出队的基础操作
+
 **总结：**
 
 1、Handler有且只能绑定一个线程的Looper。  
