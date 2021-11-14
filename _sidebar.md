@@ -58,13 +58,6 @@
 * * [数据结构](java/数据结构.md)
 * * [算法](java/算法.md)
 
-* **算法锦集(高频)**
-* * [数组](algorithm/数组.md)
-* * [链表](algorithm/链表.md)
-* * [二叉树](algorithm/二叉树.md)
-* * [字符串](algorithm/字符串.md)
-* * [队列](algorithm/队列.md)
-
 * [**常用设计模式**](java/常用设计模式.md)
 
 * [**Kotlin**](android/Kotlin.md)
