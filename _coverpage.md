@@ -4,6 +4,6 @@
 
 > A Book for learning Android.
 
-[Gitee](https://gitee.com/zhongziming/android-book)
-[GitHub](https://github.com/zzmgoing/android-book)
+[钟子明](https://www.zzming.cn)
+[Node Book](https://nodebook.zzming.cn)
 [Get Started](#get_started)
