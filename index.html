@@ -40,14 +40,14 @@
     window.$docsify = {
         name: 'Android Book',
         repo: 'https://github.com/zzmgoing/android-book',
+        loadNavbar: true,
         loadSidebar: true,
         autoHeader: true,
         maxLevel: 4,
         subMaxLevel: 4,
-        // loadNavbar: true,
         // mergeNavbar: true,
         auto2top: true,
-        coverpage: true,
+        // coverpage: true,
         // logo: '/_media/icon_small.svg',
         themeColor: '#36ab60',
         executeScript: true,
@@ -61,17 +61,7 @@
             placeholder: '搜一把试试',
             noData: '怎么肥事，没有搜到',
             depth: 6
-        },
-        plugins: [
-            function (hook) {
-                var cyan = ['<div id="SOHUCS">', '</div>',
-                    '<scrip', 't src="https://img.upyun.zzming.cn/js/changyan.js">', '</scrip', 't>',
-                    '<scrip', 't src="https://img.upyun.zzming.cn/js/prism.js">', '</scrip', 't>'].join('');
-                hook.afterEach(function (html) {
-                    return html + cyan;
-                });
-            }
-        ]
+        }
     };
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
