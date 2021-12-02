@@ -4,6 +4,6 @@
 
 > A Book for learning Android.
 
-[钟子明](https://www.zzming.cn)
+[ZhongZiMing](https://www.zzming.cn)
 [Node Book](https://nodebook.zzming.cn)
 [Get Started](#get_started)
