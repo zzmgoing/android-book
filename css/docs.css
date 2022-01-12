@@ -5,7 +5,7 @@ nav.app-nav ul li a img {
 }
 
 .markdown-section blockquote {
-  margin: 20px 0!important;
+  margin: 20px 0 !important;
   background-color: #f5f8fc;
   padding: 1rem;
   color: #8796a8;
@@ -31,4 +31,20 @@ nav.app-nav ul li a img {
   .app-nav {
     display: none;
   }
+}
+
+.font-red {
+  color: red;
+}
+
+.font-gray {
+  color: #A5A5A5;
+}
+
+.bg-gray {
+  background-color: lightgray;
+}
+
+.bg-red {
+  background-color: tomato;
 }
