@@ -36,4 +36,5 @@ if __name__ == '__main__':
     dir = sys.argv[1]
     if not os.path.exists(dir):
         os.makedirs(dir)
+    print('接收到参数：' + sys.argv[1] + sys.argv[2])
     zip_file_path('.', sys.argv[1], 'android-book.zip')
