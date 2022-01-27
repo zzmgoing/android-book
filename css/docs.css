@@ -1,7 +1,7 @@
 nav.app-nav ul li a img {
-  vertical-align: top;
+  vertical-align: middle;
   margin-right: 5px;
-  width: 30px;
+  width: 50px;
 }
 
 .markdown-section blockquote {
