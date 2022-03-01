@@ -54,6 +54,12 @@
   - [ARouter](frame/ARouter.md)
   - [Glide](frame/Glide.md)
 
+- Flutter
+  - [Flutter简介](flutter/Flutter简介.md)
+  - [Dart简介](flutter/Dart.md)
+  - [Flutter与Activity通信](flutter/Flutter与Activity通信.md)
+  - [Widget、Element、RederObject](flutter/Widget、Element、RederObject.md)
+
 - 数据结构与算法
   - [数据结构](java/数据结构.md)
   - [算法](java/算法.md)
@@ -61,8 +67,6 @@
 - [常用设计模式](java/常用设计模式.md)
 
 - [Kotlin](android/Kotlin.md)
-
-- [Flutter](android/Flutter.md)
 
 - [Android版本适配](android/Android版本适配.md)
 
