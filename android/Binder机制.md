@@ -38,14 +38,13 @@ Binder基于Client-Server通信模式，一共有四个角色：
 **使用服务的具体执行过程**
 
 ![输入图片说明](img/%E4%BD%BF%E7%94%A8Binder%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.pngimage.png)
-
-1、Client通过获得一个Server的代理接口，对Server进行调用。
-2、代理接口中定义的方法与Server中定义的方法是一一对应的。
-3、Client调用某个代理接口中的方法时，代理接口的方法会将Client传递的参数打包成Parcel对象。
-4、代理接口将Parcel发送给内核中的Binder Driver。
-
-5、Server会读取Binder Driver中的请求数据，如果是发送给自己的，解包Parcel对象，处理并将结果返回。
-6、整个的调用过程是一个同步过程，在Server处理的时候，Client会Block住。因此Client调用过程不应在主线程。
+ 
+1、Client通过获得一个Server的代理接口，对Server进行调用。  
+2、代理接口中定义的方法与Server中定义的方法是一一对应的。  
+3、Client调用某个代理接口中的方法时，代理接口的方法会将Client传递的参数打包成Parcel对象。  
+4、代理接口将Parcel发送给内核中的Binder Driver。  
+5、Server会读取Binder Driver中的请求数据，如果是发送给自己的，解包Parcel对象，处理并将结果返回。  
+6、整个的调用过程是一个同步过程，在Server处理的时候，Client会Block住。因此Client调用过程不应在主线程。  
 
 **进程间通信方式**  
 1、Files文件系统（包括内存映射）  
