@@ -32,6 +32,8 @@ Binder基于Client-Server通信模式，一共有四个角色：
 2、Server进程：提供服务的进程。  
 3、ServiceManager进程：ServiceManager的作用是将字符形式的Binder名字转化成Client中对该Binder的引用，使得Client能够通过Binder名字获得对Server中Binder实体的引用。  
 4、Binder驱动：驱动负责进程之间Binder通信的建立，Binder在进程之间的传递，Binder引用计数管理，数据包在进程之间的传递和交互等一系列底层支持。  
+![输入图片说明](img/image.png)
+
 
 **进程间通信方式**  
 1、Files文件系统（包括内存映射）  
