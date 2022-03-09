@@ -36,6 +36,7 @@ Binder基于Client-Server通信模式，一共有四个角色：
 ![输入图片说明](img/image.png)
 
 **使用服务的具体执行过程**
+
 ![输入图片说明](img/%E4%BD%BF%E7%94%A8Binder%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%85%B7%E4%BD%93%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.pngimage.png)
 
 1、Client通过获得一个Server的代理接口，对Server进行调用。
