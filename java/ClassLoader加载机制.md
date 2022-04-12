@@ -3,13 +3,13 @@
 >在 Java 程序启动的时候，并不会一次性加载程序中所有的 .class 文件，而是在程序的运行过程中，动态地加载相应的类到内存中。
 
 通常情况下，Java 程序中的 .class 文件会在以下 2 种情况下被 ClassLoader 主动加载到内存中：  
-① 调用类构造器  
-② 调用类中的静态（static）变量或者静态方法
+1、 调用类构造器  
+2、 调用类中的静态（static）变量或者静态方法
 
-JVM 中自带 3 个类加载器：  
-① 启动类加载器 **BootstrapClassLoader**  
-② 扩展类加载器 **ExtClassLoader**（JDK 1.9 之后，改名为 PlatformClassLoader）  
-③ 系统加载器 **APPClassLoader**  
+JVM 中自带 3 个类加载器：
+- 启动类加载器 **BootstrapClassLoader**
+- 扩展类加载器 **ExtClassLoader**（JDK 1.9 之后，改名为 PlatformClassLoader）
+- 系统加载器 **APPClassLoader**
 
 **双亲委派模式（Parents Delegation Model）**
 
@@ -78,6 +78,6 @@ public DexClassLoader(String dexPath,String optimizedDirectory,String libraryPat
 **总结**
 
 ① ClassLoader 就是用来加载 class 文件的，不管是 jar 中还是 dex 中的 class。  
-② Java 中的 ClassLoader 通过双亲委托来加载各自指定路径下的 class 文件。  
+② Java 中的 ClassLoader 通过双亲委派来加载各自指定路径下的 class 文件。  
 ③ 可以自定义 ClassLoader，一般覆盖 findClass() 方法，不建议重写 loadClass 方法。  
 ④ Android 中常用的两种 ClassLoader 分别为：PathClassLoader 和 DexClassLoader。  

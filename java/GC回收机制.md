@@ -12,7 +12,7 @@ JVM通过**可达性分析算法**来标识垃圾，首先通过GC Root作为起
 
 **可以作为GC Root的对象：**  
 
-1、Java 虚拟机栈（局部变量表）中的引用的对象。  
+1、Java 虚拟机栈（局部变量表）中引用的对象。  
 2、方法区中静态引用指向的对象。  
 3、仍处于存活状态中的线程对象。  
 4、Native 方法中 JNI 引用的对象。  
@@ -39,6 +39,6 @@ Java 虚拟机根据对象存活的周期不同，把堆内存划分为几块，
 判断对象是否存活我们是通过GC Roots的引用可达性来判断的。但是JVM中的引用关系并不止一种，而是有四种，根据引用强度的由强到弱，
 他们分别是:**强引用(Strong Reference)、软引用(Soft Reference)、弱引用(Weak Reference)、虚引用(Phantom Reference)。**
 
-![yy](https://img.upyun.zzming.cn/android/gc_yy.png)
+[四大引用类型](java/四大引用类型.md)
 
 Android中软引用使用较多，但是不当的使用也会导致异常，比如软引用被强引用持有而频繁回收。

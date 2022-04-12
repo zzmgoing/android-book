@@ -5,4 +5,6 @@
 /.git
 /.out
 /src
+/node_modules
 *.class
+*.json
