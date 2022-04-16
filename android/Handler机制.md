@@ -33,7 +33,7 @@ MessageQueue内部持有一个Message对象，采用**单项链表**的形式来
 ## HandlerThread
 >HandlerThread可以创建一个带有looper的线程。Looper对象可以用于创建Handler类来进行调度。
 
-1、HandlerThread将loop转到子线程中去处理，说白了就是分担MainLooper的工作量，降低了主线程压力，使主界面更流程。  
+1、HandlerThread将loop转到子线程中去处理，说白了就是分担MainLooper的工作量，降低了主线程压力，使主界面更流畅。  
 2、开启一个线程起到多个线程的作用。处理任务是串行执行，按消息发送顺序进行处理。HandlerThread本质是一个线程，在线程内部，代码是串行处理的。但是由于每一个任务都将以队列的方式逐个被执行到，一旦队列中某个任务执行时间过长，那么就会导致后续的任务都会被延迟处理。HandlerThread拥有自己的消息队列，它不会干扰或阻塞UI线程。  
 3、对于网络I/O操作，HandlerThread并不合适，因为它只有一个线程，还得排队一个一个等着。  
 
@@ -45,8 +45,8 @@ MessageQueue内部持有一个Message对象，采用**单项链表**的形式来
 MessageQueue是在Looper的构造函数里面创建的，所以一个线程对应一个Looper，一个Looper对应一个MessageQueue。
 
 **Looper，Handler，MessageQueue的引用关系**  
-一个Handler对象持有一个MessageQueue和它构造时所属的线程的Looper引用。也就是说一个Handler必须顶有它对应的消息队列和Looper。一个线程可能有多个Handler，但是至多有只能有一个Looper和一个消息队列。  
-在主线程中new了一个Handler对象后，这个Handler对象自动和主线程生成的Looper以及消息队列关联上了。子线程中拿到主线程中Handler的引用，发送消息后，消息对象就会发送到target属性对应的的那个Handler对应的消息队列中去，由对应Looper来处理(子线程msg->主线程handler->主线程messageQueue->主线程Looper->主线程Handler的handlerMessage)。而消息发送到主线程Handler，那么也就是发送到主线程的消息队列，用主线程的Looper轮询。
+一个Handler对象持有一个MessageQueue和它构造时所属线程的Looper引用。也就是说一个Handler必须持有它对应的消息队列和Looper。一个线程可能有多个Handler，但是至多有只能有一个Looper和一个消息队列。  
+在主线程中new了一个Handler对象后，这个Handler对象自动和主线程生成的Looper以及消息队列关联上了。子线程中拿到主线程中Handler的引用，发送消息后，消息对象就会发送到target属性对应的那个Handler对应的消息队列中去，由对应Looper来处理(子线程msg->主线程handler->主线程messageQueue->主线程Looper->主线程Handler的handlerMessage)。而消息发送到主线程Handler，那么也就是发送到主线程的消息队列，用主线程的Looper轮询。
 
 
 >[https://blog.csdn.net/wsq_tomato/article/details/80301851](https://blog.csdn.net/wsq_tomato/article/details/80301851)
