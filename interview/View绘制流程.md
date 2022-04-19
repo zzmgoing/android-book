@@ -38,7 +38,7 @@ View的绘制流程是从ViewRoot的performTraversals开始的，它经过measur
 
 **invalidate()和requestLayout()的不同**
 
-requestLayout()会直接递归调用父窗口的requestLayout()，直到ViewRootImpl,然后触发performTraversals()，**由于mLayoutRequested为true，会导致onMeasure()和onLayout()被调用，不一定会触发OnDraw()。** requestLayout()触发onDraw()可能是因为在在layout过程中发现l,t,r,b和以前不一样，那就会触发一次invalidate()，所以触发了onDraw()，也可能是因为别的原因导致mDirty非空（比如在跑动画）
+requestLayout()会直接递归调用父窗口的requestLayout()，直到ViewRootImpl,然后触发performTraversals()，**由于mLayoutRequested为true，会导致onMeasure()和onLayout()被调用，不一定会触发OnDraw()。** requestLayout()触发onDraw()可能是因为在在layout过程中发现l,t,r,b和以前不一样，那就会触发一次invalidate()，所以触发了onDraw()，也可能是因为别的原因导致mDirty非空（比如在跑动画）。
 
 view的invalidate()不会导致ViewRootImpl的invalidate()被调用，而是递归调用父view的invalidateChildInParent()，直到ViewRootImpl的invalidateChildInParent()，然后触发performTraversals()，会导致当前view被重绘,**由于mLayoutRequested为false，不会导致onMeasure()和onLayout()被调用，而OnDraw()会被调用**。
 
