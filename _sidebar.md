@@ -4,11 +4,11 @@
   - [Java特点及特性](java/Java特点及特性.md)
   - [数据类型](java/数据类型.md)
   - [四大引用类型](java/四大引用类型.md)
-  - [JVM的内存分配](java/JVM的内存分配.md)
-  - [ClassLoader加载机制](java/ClassLoader加载机制.md)
-  - [Class类的加载过程](java/Class类的加载过程.md)
-  - [GC回收机制](java/GC回收机制.md)
-  - [线程、多线程、锁](java/线程、多线程、锁.md)
+  - [**JVM的内存分配**](java/JVM的内存分配.md)
+  - [**ClassLoader加载机制**](java/ClassLoader加载机制.md)
+  - [**Class类的加载过程**](java/Class类的加载过程.md)
+  - [**GC回收机制**](java/GC回收机制.md)
+  - [**线程、多线程、锁**](java/线程、多线程、锁.md)
   - [数据库索引和事务](java/数据库索引和事务.md)
 
 - Android
@@ -18,10 +18,10 @@
   - [BroadcastReceiver](android/BroadcastReceiver.md)
   - [ContentProvider](android/ContentProvider.md)
   - [Animation动画](android/Animation动画.md)
-  - [Handler机制](android/Handler机制.md)
-  - [Binder机制](android/Binder机制.md)
+  - [**Handler机制**](android/Handler机制.md)
+  - [**Binder机制**](android/Binder机制.md)
   - [AIDL进程间通信](android/AIDL进程间通信.md)
-  - [进程和多线程](android/进程和多线程.md)
+  - [**进程和多线程**](android/进程和多线程.md)
   - [数据存储](android/数据存储.md)
 
 - Android面试
@@ -58,7 +58,7 @@
   - [Flutter简介](flutter/Flutter简介.md)
   - [Dart简介](flutter/Dart.md)
   - [Flutter与Activity通信](flutter/Flutter与Activity通信.md)
-  - [Widget、Element、RederObject](flutter/Widget、Element、RederObject.md)
+  - [**Widget、Element、RederObject**](flutter/Widget、Element、RederObject.md)
 
 - 数据结构与算法
   - [数据结构](java/数据结构.md)
