@@ -1,4 +1,4 @@
-# Flutter和Activity之间通信
+# Flutter与Activity通信
 
 - 通过EventChannel来实现，EventChannel仅支持数据单向传递，无返回值，用于数据流（event streams）的通信。  
 - 通过MethodChannel来实现，MethodChannel支持数据双向传递，有返回值，用于传递方法调用（method invocation）。  

@@ -41,6 +41,10 @@ nav.app-nav ul li a img {
   color: #A5A5A5;
 }
 
+.font-blue {
+  color: #3c6ea8;
+}
+
 .bg-gray {
   background-color: lightgray;
 }
@@ -48,3 +52,9 @@ nav.app-nav ul li a img {
 .bg-red {
   background-color: tomato;
 }
+
+summary {
+    margin: 5px 0px 5px 0px;
+    color: #3c6ea8;
+}
+
