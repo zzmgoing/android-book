@@ -1,6 +1,0 @@
-- [**Java**](/java/README.md)
-- [**Android**](/android/README.md)
-- [**Android面试**](/interview/README.md)
-- [**LeetCode算法**](/leetcode/README.md)
-- [**Flutter**](/flutter/README.md)
-- [**Kotlin**](/kotlin/Kotlin.md)
