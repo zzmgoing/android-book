@@ -1,3 +1,4 @@
+
 // Docsify plugin functions
 function auto_add_update_time_plugin(hook, vm) {
 
