@@ -1,5 +1,5 @@
 - 网络
-  - [TCP/UDP/HTTP/HTTPS](/java/TCP、UDP、HTTP、HTTPS.md)
+  - [Tcp/Udp/Http/Https/Socket](/java/Tcp和Udp和Http和Https和Socket.md)
   - [对称加密和非对称加密](/interview/对称加密和非对称加密.md)
   - [Https的请求过程](/interview/Https的请求过程.md)
   - [网络耗时优化](/interview/网络耗时优化.md)
@@ -18,6 +18,7 @@
   - [进程和多线程](/android/进程和多线程.md)
 - Android面试
   - [基础问题](/interview/基础问题.md)
+  - [ANR](/interview/ANR.md)
   - [View事件分发](/interview/View事件分发.md)
   - [View绘制流程](/interview/View绘制流程.md)
   - [SharedPreferences存储](/interview/SharedPreferences存储.md)

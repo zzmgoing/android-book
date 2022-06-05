@@ -16,4 +16,4 @@
 节点流：直接与数据源相连，读入或读出。  
 处理流：与节点流一块使用，在节点流的基础上，再套接一层，套接在节点流上的就是处理流。
 
-![IO流](https://img.upyun.zzming.cn/android/io.png)
+![IO流](../image/io.webp)

@@ -6,9 +6,9 @@
 - dns服务器查询获取解析
 
 **第二步：TCP三次握手链接**
-- 客户端发送syn数据包给服务器（在吗）
-- 服务器收到后返回一个syn响应包给客户端（我在）
-- 客户端收到后回传一个数据包给服务器表示确认（好的）
+- 客户端发送syn数据包给服务器（SYN=1、Seq=X）
+- 服务器收到后返回一个syn响应包给客户端（SYN=1、ACK=X+1、Seq=Y）
+- 客户端收到后回传一个数据包给服务器表示确认（ACK=Y+1、Seq=Z）
 
 **第三步：证书验证**  
 - 客户端发起https请求（包含支持的SSL版本，加密算法等）
@@ -29,7 +29,7 @@
 - 客户端根据本地根证书的（CA公钥）解密证书的数字摘要，看看是否匹配。
 - 如果数字签名验证通过，就使用服务器提供的公钥进行下一步通信。
 
-![https](https://img.upyun.zzming.cn/android/https%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B.jpg)
+![https](../image/https%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B.jpg)
 
 > [https原理拆解（附运行流程图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/383254610)  
 > [一图说明HTTPS请求过程_我的笨毛毛的博客-CSDN博客_https的请求流程](https://blog.csdn.net/u013998466/article/details/108227756)

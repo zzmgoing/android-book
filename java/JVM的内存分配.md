@@ -4,7 +4,7 @@
 
 下面这张图描述了一个 HelloWorld.java 文件被 JVM 加载到内存中的过程：
 
-![jvm](https://img.upyun.zzming.cn/android/jvm_fp.png)
+![jvm](../image/jvm_fp.webp)
 
 * HelloWorld.java 文件首先需要经过编译器编译，生成 HelloWorld.class 字节码文件。  
 * Java 程序中访问HelloWorld这个类时，需要通过 ClassLoader(类加载器)将HelloWorld.class 加载到 JVM 的内存中。  
@@ -62,6 +62,6 @@ Java 堆（Heap）是 JVM 所管理的内存中最大的一块，该区域唯一
 
 理论上，虚拟机栈、堆、方法区都有发生OutOfMemoryError的可能。但是实际项目中，大多发生于堆当中。比如在一个无限循环中，动态的向ArrayList中添加新的HeapError对象。这会不断的占用堆中的内存，当堆内存不够时，必然会产生OutOfMemoryError，也就是内存溢出异常。
 
-![jvm](https://img.upyun.zzming.cn/android/jvm_ing.png)
+![jvm](../image/jvm_ing.webp)
 
 总结来说，JVM 的运行时内存结构中一共有两个栈和一个堆，分别是：Java 虚拟机栈和本地方法栈，以及GC堆和方法区。除此之外还有一个程序计数器，但是我们开发者几乎不会用到这一部分，所以并不是重点学习内容。 JVM 内存中只有堆和方法区是线程共享的数据区域，其它区域都是线程私有的。并且程序计数器是唯一一个在 Java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域。

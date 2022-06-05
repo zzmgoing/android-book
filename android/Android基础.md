@@ -6,7 +6,7 @@ Android系统架构从下往上依次是：Linux内核层、硬件抽象层、C/
 
 <details><summary>Android架构图及详解</summary>
 
-![android架构图](https://img.upyun.zzming.cn/android/android-stack_2x.png)
+![android架构图](../image/android-stack_2x.webp)
 
 - Linux 内核  
 Android 平台的基础是 Linux 内核。例如，Android Runtime (ART) 依靠 Linux 内核来执行底层功能，例如线程和低层内存管理。
@@ -60,7 +60,7 @@ Linux驱动包含了SurfaceFlingger和Binder，SF驱动的作用是把各个Surf
 
 ### Activity生命周期
 
-![activity](https://img.upyun.zzming.cn/android/activity.png)
+![activity](../image/activity.webp)
 
 |  回调   |  描述   |
 | --- | --- |
@@ -112,7 +112,7 @@ Linux驱动包含了SurfaceFlingger和Binder，SF驱动的作用是把各个Surf
 
 ### Service生命周期
 
-![service](https://img.upyun.zzming.cn/android/service.png)
+![service](../image/service.png)
 
 |  回调   |  描述   |
 | --- | --- |
@@ -132,8 +132,8 @@ Linux驱动包含了SurfaceFlingger和Binder，SF驱动的作用是把各个Surf
 
 ### Service启动方式
 
-1、startService()只是启动Service，启动它的组件（如Activity）和Service没有关联，只有当Service调用自身的stopSelf或者其他组件调用stopService()时，服务才会终止。  
-2、bindService()方法启动Service，其他的组件可以通过回调获取Service的代理对象和Service进行绑定及交互，当启动的组件销毁时，Service也会自动进行unBind()操作，当所有的绑定组件都进行了unBind()时才会销毁Service。
+1、startService()只是启动Service（运行在UI线程），启动它的组件（如Activity）和Service没有关联，只有当Service调用自身的stopSelf或者其他组件调用stopService()时，服务才会终止。  
+2、bindService()方法启动Service（运行在binder线程），其他的组件可以通过回调获取Service的代理对象和Service进行绑定及交互，当启动的组件销毁时，Service也会自动进行unBind()操作，当所有的绑定组件都进行了unBind()时才会销毁Service。
 
 ### Service优先级
 
@@ -250,7 +250,7 @@ public class MyReceiver extends BroadcastReceiver {
 <details><summary>ContentProvider内容URI、创建内容提供者</summary>
 <br>
 
-![content](https://img.upyun.zzming.cn/android/content.jpg) 
+![content](../image/content.jpg) 
 
 ### 内容URI
 
@@ -286,6 +286,47 @@ public class MyReceiver extends BroadcastReceiver {
 |  getType()   |  该方法为给定的URI返回元数据类型   |
 
 </details>
+
+## 四大组件区别和Context
+
+- Activity与Service有生命周期，而BroadcastReceiver与ContentProvider采用监听机制，没有生命周期。
+- 四大组件都需要在AndroidManifest.xml中注册，实现时都要继承其抽象的父类
+- 除了ContentProvider外，其他组件都要用到intent。
+- Service与Activity关系最为密切，BroadcastReceiver与ContentProvider的实现基本不依赖于Activity。
+
+![context](../image/android_context.png)
+
+- Activity跟Service都继承自Context，区别是Activity包含Theme信息，启动的Activity带有任务栈的信息。
+- ContentProvider的Context就是Application。
+- Broadcast Receiver的Context比较特殊，是传进来的，类型是ReceiverRestrictedContext，也就是说进行了一些限制，不能bindService,也不能registerReceiver。
+
+Context 就相当于 Application 的大管家，主要负责：
+- 四大组件的交互，包括启动 Activity、Broadcast、Service，获取 ContentResolver 等。
+- 获取系统/应用资源，包括 AssetManager、PackageManager、Resources、System Service 以及 color、string、drawable 等。
+- 文件，包括获取缓存文件夹、删除文件、SharedPreference 相关等。
+- 数据库（SQLite）相关，包括打开数据库、删除数据库、获取数据库路径等。
+- 其它辅助功能，比如设置 ComponentCallbacks，即监听配置信息改变、内存不足等事件的发生。
+
+ContextWrapper 实际上就是 Context 的代理类而已，所有的操作都是通过内部成员 mBase 完成的，另外，Activity、Service 的 getBaseContext 返回的就是这个 mBase。
+
+相比 ContextWrapper，ContextThemeWrapper 有自己的另外 Resource 以及 Theme 成员，并且可以传入配置信息以初始化自己的 Resource 及 Theme。即 Resource 以及 Theme 相关的行为不再是直接调用 mBase 的方法了，也就说，ContextThemeWrapper 和它的 mBase 成员在 Resource 以及 Theme 相关的行为上是不同的。
+
+ContextImpl 和 ContextThemeWrapper 最大的区别就是没有一个 Configuration 而已，其它的行为大致是一样的。另外，ContextImpl 可以用于创建 Activity、Service 以及 Application 的 mBase 成员，这个 Base Context 时除了参数不同，它们的 Resource 也不同。需要注意的是，createActivityContext 等方法中 setResource 是 mBase 自己调用的，Activity、Service 以及 Application 本身并没有执行 setResource。
+
+**小结**
+
+- ContextWrapper、ContextThemeWrapper 都是 Context 的代理类，二者的区别在于 ContextThemeWrapper 有自己的 Theme 以及 Resource，并且 Resource 可以传入自己的配置初始化
+- ContextImpl 是 Context 的主要实现类，Activity、Service 和 Application 的 Base Context 都是由它创建的，即 ContextWrapper 代理的就是 ContextImpl 对象本身
+- ContextImpl 和 ContextThemeWrapper 的主要区别是， ContextThemeWrapper 有 Configuration 对象，Resource 可以根据这个对象来初始化
+- Service 和 Application 使用同一个 Recource，和 Activity 使用的 Resource 不同
+
+**重点**
+
+在Service中调用startActivity和在BroadcastReceiver（静态注册）中通过onReceive传递过来的context.startActivity时（该context类型为ReceiverRestrictedContext，和Service一样，都没有重写startActivity），如果不加FLAG_ACTIVITY_NEW_TASK的话会报错，提示没有添加FLAG_ACTIVITY_NEW_TASK这个flag。
+
+在Activity中不加FLAG_ACTIVITY_NEW_TASK调用startActivity时不会报错是因为Activity重写了ContextWrapper中的startActivity方法，没有加FLAG_ACTIVITY_NEW_TASK判断。
+
+NEW_TASK这个属性它的原则是：设置此状态，首先会查找是否存在和被启动的Activity具有相同的亲和性的任务栈（即taskAffinity，注意同一个应用程序中的activity的亲和性一样），如果有，则直接把这个栈整体移动到前台，并保持栈中的状态不变，即栈中的activity顺序不变，如果没有，则新建一个栈来存放被启动的activity。总结来说就是**同一个应用中跳转不会创建新的Task，跳到另外一个应用中会启动新的Task。**
 
 ## Animation
 
@@ -352,3 +393,5 @@ ObjectAnimator功能更加强大，可以控制位移、透明度、旋转、缩
 ## 数据存储
 
 Android中数据存储：SharedPreferences、文件存储、SQLite数据库、ContentProvider、网络存储
+
+> [https://www.shuzhiduo.com/A/Vx5MGGamzN/](https://www.shuzhiduo.com/A/Vx5MGGamzN/)

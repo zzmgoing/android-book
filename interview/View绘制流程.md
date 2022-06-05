@@ -4,7 +4,7 @@ View的绘制流程是从ViewRoot的performTraversals开始的，它经过measur
 
 自定义View绘制流程函数调用链(简化版)
 
-![view](https://img.upyun.zzming.cn/android/zdy_view.jpg)
+![view](../image/zdy_view.jpg)
 
 ## measure()
 测量视图大小。从顶层父View到子View递归调用measure方法，measure方法又回调OnMeasure。

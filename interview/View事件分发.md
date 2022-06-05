@@ -14,13 +14,13 @@
 
 **总结：**
 
-![总结](https://img.upyun.zzming.cn/android/shijianfenfa.webp)
+![总结](../image/shijianfenfa.webp)
 
 ## Activity的事件分发机制
 
 !> 当一个点击事件发生时，事件最先传到Activity的dispatchTouchEvent()进行事件分发
 
-![总结](https://img.upyun.zzming.cn/android/activity_shijianfenfa.png)
+![总结](../image/activity_shijianfenfa.webp)
 
 ## ViewGroup的事件分发机制
 
@@ -28,13 +28,13 @@
 
 **onInterceptTouchEvent()方法返回true即拦截事件，默认false不拦截**
 
-![总结](https://img.upyun.zzming.cn/android/viewgroup_shijianfenfa.webp)
+![总结](../image/viewgroup_shijianfenfa.webp)
 
 ## View的事件分发机制
 
 !> 从上面ViewGroup事件分发机制知道，View事件分发机制从dispatchTouchEvent()开始
 
-![总结](https://img.upyun.zzming.cn/android/view_shijianfenfa.webp)
+![总结](../image/view_shijianfenfa.webp)
 
 **总结：**
 

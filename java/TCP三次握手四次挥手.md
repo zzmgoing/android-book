@@ -1,16 +1,16 @@
-[<< 返回TCP/UDP/HTTP/HTTPS](/java/TCP、UDP、HTTP、HTTPS.md)
+[<< 返回TCP/UDP/HTTP/HTTPS](/java/Tcp和Udp和Http和Https和Socket.md)
 
 # TCP三次握手四次挥手
 
 **TCP三次握手**
 
-1）第一次握手：建立连接时，客户端发送syn包（syn=x）到服务器，并进入SYN_SENT状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。  
-2）第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即SYN+ACK包，此时服务器进入SYN_RECV状态；  
+1）第一次握手：建立连接时，客户端发送syn包（syn=1、seq=x）到服务器，并进入SYN_SENT状态，等待服务器确认；SYN：同步序列编号（Synchronize Sequence Numbers）。  
+2）第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=1、seq=y），即SYN+ACK包，此时服务器进入SYN_RECV状态；  
 3）第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=y+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。  
 
 通俗理解如下图：  
 
-![tcp_3w](https://img.upyun.zzming.cn/android/tcp_3w.jpeg)
+![tcp_3w](../image/tcp_3w.webp)
 
 **TCP四次挥手**
 
@@ -23,6 +23,6 @@
 
 通俗理解如下图：
 
-![tcp_4h](https://img.upyun.zzming.cn/android/tcp_4h.jpeg)
+![tcp_4h](../image/tcp_4h.webp)
 
 > [详解 TCP 连接的“ 三次握手 ”与“ 四次挥手 ”](https://baijiahao.baidu.com/s?id=1654225744653405133&wfr=spider&for=pc)

@@ -10,7 +10,7 @@ a. HelloWorld.java 文件首先需要经过编译器编译，生成 HelloWorld.c
 b. Java 程序中访问HelloWorld这个类时，需要通过 ClassLoader(类加载器)将HelloWorld.class 加载到 JVM 的内存中。  
 c. JVM 中的内存可以划分为若干个不同的数据区域，主要分为：**程序计数器、虚拟机栈、本地方法栈、堆、方法区**。  
 
-![jvm](https://img.upyun.zzming.cn/android/jvm_fp.png)
+![jvm](../image/jvm_fp.webp)
 
 **1、程序计数器**  
 >程序计数器是虚拟机中一块较小的内存空间，主要用于记录当前线程执行的位置。
@@ -49,7 +49,7 @@ Java 堆（Heap）是 JVM 所管理的内存中最大的一块，该区域唯一
 
 方法区（Method Area）也是 JVM 规范里规定的一块**运行时数据区**。方法区主要是存储已经被**JVM 加载的类信息（版本、字段、方法、接口）、常量、静态变量、即时编译器编译后的代码和数据**。该区域同堆一样，也是被各个线程共享的内存区域。
 
-![jvm](https://img.upyun.zzming.cn/android/jvm_ing.png)
+![jvm](../image/jvm_ing.webp)
 
 **异常**  
 **StackOverflowError** 栈溢出异常  
@@ -101,13 +101,13 @@ Java 虚拟机根据对象存活的周期不同，把堆内存划分为几块，
 判断对象是否存活我们是通过GC Roots的引用可达性来判断的。但是JVM中的引用关系并不止一种，而是有四种，根据引用强度的由强到弱，
 他们分别是:**强引用(Strong Reference)、软引用(Soft Reference)、弱引用(Weak Reference)、虚引用(Phantom Reference)**。
 
-![yy](https://img.upyun.zzming.cn/android/gc_yy.png)
+![yy](../image/gc_yy.webp)
 
 Android中软引用使用较多，但是不当的使用也会导致异常，比如软引用被强引用持有而频繁回收。
 
 ## 3、class类文件结构
 
-![class](https://img.upyun.zzming.cn/android/class_jg.png)
+![class](../image/class_jg.webp)
 
 String字符串的长度：  
 我们在java代码中声明的String字符串最终在class文件中的存储格式就 CONSTANT_utf8_info。因此一个字符串最大长度也就是u2所能代表的最大值65536个，但是需要使用2个字节来保存 null 值，因此一个字符串的最大长度为 65536 - 2 = 65534。
@@ -116,7 +116,7 @@ String字符串的长度：
 
 顾名思义，所谓编译插桩就是在代码编译期间修改已有的代码或者生成新代码。实际上，我们项目中经常用到的 Dagger、ButterKnife 甚至是 Kotlin 语言，它们都用到了编译插桩的技术。
 
-![bycz](https://img.upyun.zzming.cn/android/class_bycz.png)
+![bycz](../image/class_bycz.webp)
 
 1.在 .java 文件编译成 .class 文件时，APT、AndroidAnnotation 等就是在此处触发代码生成。  
 2.在 .class 文件进一步优化成 .dex 文件时，也就是直接操作字节码文件，也是本课时主要介绍的内容。这种方式功能更加强大，应用场景也更多。但是门槛比较高，需要对字节码有一定的理解。
@@ -352,7 +352,7 @@ CAS 底层会根据操作系统和处理器的不同来选择对应的调用代�
 
 **线程池体系**  
 
-![thread](https://img.upyun.zzming.cn/android/thread_pool.png)
+![thread](../image/thread_pool.webp)
 
 1、Executor 是线程池最顶层的接口，在 Executor 中只有一个 execute 方法，用于执行任务。至于线程的创建、调度等细节由子类实现。  
 2、ExecutorService 继承并拓展了 Executor，在 ExecutorService 内部提供了更全面的任务提交机制以及线程池关闭方法。  
