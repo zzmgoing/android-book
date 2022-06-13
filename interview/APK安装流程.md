@@ -9,6 +9,20 @@
 
 ## Activity启动流程
 
+1、首先startActivity()调用startActivityForResult()  
+2、然后通过ActivityManagerProxy 调用 system_server 进程中的 ActivityManagerService中的startActivity()
+
+* 如果应用进程未启动
+* 2.1、 调用Zygote 孵化应用进程
+* 2.2、 进程创建后调用 ActivityThread#main 方法
+* 2.3、 main方法调用 attach 方法将应用进程绑定到ActivityManagerService 中（保存应用的 ApplicationThread 的代理对象）
+* 2.4、 开启loop循环接收消息
+
+3、ActivityManagerService 通过 ApplicationThread 的代理发送 Message 通知启动 Activity  
+4、Activity 内部 Handler 处理 handleLaunchActivity，依次调用 performLaunchActivity，handleResumeActivity（即onCreate, onStart, onResume）
+
+## 点击应用图标
+
 > 点击应用图标后会去启动应用的LauncherActivity，如果LancerActivity所在的进程没有创建，还会创建新进程，整体的流程就是一个Activity的启动流程。
 
 - 点击桌面应用图标，Launcher进程将启动Activity（LancerActivity）的请求以Binder的方式发送给了AMS

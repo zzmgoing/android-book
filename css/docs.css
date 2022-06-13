@@ -46,15 +46,43 @@ nav.app-nav ul li a img {
 }
 
 .bg-gray {
-  background-color: lightgray;
+  background-color: #f8f8f8;
 }
 
 .bg-red {
   background-color: tomato;
 }
 
-summary {
-    margin: 5px 0px 5px 0px;
-    color: #3c6ea8;
+details {
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color:rgba(73,177,245,0.1);
+    margin-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
+summary {
+    cursor: pointer;
+    padding: 20px 0px 20px 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    font-size: 0.875rem !important;
+    font-weight: 600;
+    position: relative;
+    line-height: normal;
+    background-color: rgba(73,177,245,0.1);
+}
+
+@font-face {
+    font-family: 'ZhuZiAWan';
+    /* 字体名自定义即可 */
+    src: url(fonts/ZhuZiAWan.woff2);
+    /* 字体文件路径 */
+    font-display: swap;
+}
+
+body {
+    font-family: ZhuZiAWan !important;
+}

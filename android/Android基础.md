@@ -103,6 +103,38 @@ Linux驱动包含了SurfaceFlingger和Binder，SF驱动的作用是把各个Surf
 3、ActivityManagerService 通过 ApplicationThread 的代理发送 Message 通知启动 Activity  
 4、Activity 内部 Handler 处理 handleLaunchActivity，依次调用 performLaunchActivity，handleResumeActivity（即onCreate, onStart, onResume）
 
+## Fragment
+
+FragmentTransaction的提交方式：
+
+- commit()
+- commitAllowingStateLoss()
+- commitNow()
+- commitNowAllowingStateLoss()
+
+### commit()
+安排当前事务FragmentTransaction进行提交。但是提交后Fragment不会立即创建，而是由主线程异步来创建。也就是说使用commit()之后，你的Fragment不会被立即加入到Activity中。  
+
+本次提交，必须在Activity的onSaveInstanceState调用之前提交。否则会抛异常。
+
+### commitAllowingStateLoss()
+和commit类似。但是如果本次是在Activity的onSaveInstanceState调用之后，那么本次提交记录在Activity恢复的时候，可能不被保存。
+
+### commitNow()
+将事务立即提交。所有添加的Fragment会被立即初始化，并开始生命周期。所有被移除的Fragment将会被立即移除。  
+
+调用这个方法，相当于调用commit，然后调用FragmentManager的executePendingTransactions()。
+
+### commitNowAllowingStateLoss()
+和commitNow类似。但是如果在在Activity的onSaveInstanceState调用之后，那么本次提交记录在Activity恢复的时候，可能不被保存。
+
+**每个FragmentTransaction只能提交commit一次，再commit就会抛出异常。**
+
+commit()和commitAllowingStateLoss()在实现上唯一的不同就是当你调用commit()的时候, FragmentManger会检查是否已经存储了它自己的状态, 如果已经存了, 就抛出IllegalStateException。
+
+如果用commitAllowingStateLoss()在onSaveInstanceState()之后会丢失FragmentManager的状态, 即save之后任何被添加或被移除的Fragments。
+
+
 
 ## Service
 

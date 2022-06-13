@@ -219,6 +219,29 @@ boolean enqueueMessage(Message msg, long when) {
 
 **总结**：只有当表头来了新消息，才会唤醒Loop来获取，Message要么立即执行，要么Loop刷新自我唤醒的定时器继续睡眠。
 
+## Looper怎么保证在线程里唯一
+
+Looper的构造函数是私有的，我们在线程里面创建Looper需要调用Looper.prepare()方法，如果Looper已经创建了，再次调用会直接抛出异常。
+```java
+public static void prepare() {
+        prepare(true);
+    }
+
+private static void prepare(boolean quitAllowed) {
+    if (sThreadLocal.get() != null) {
+        throw new RuntimeException("Only one Looper may be created per thread");
+    }
+    sThreadLocal.set(new Looper(quitAllowed));
+}
+```
+1、Looper对象创建完成后会存放在ThreadLocal中。
+
+2、ThreadLocal 提供了针对于单独的线程的局部变量，并能够使用 set()、get() 方法对这些变量进行设置和获取，并且能够保证这些变量与其他线程相隔离。
+
+3、通过get()方法获取到一个ThreadLocalMap对象，如果没有则进行初始化，以ThreadLocal自身为key，存入的对象是value的ThreadLocalMap对象，然后把ThreadLocalMap存到线程Thread中。
+
+4、回到prepare()方法中，如果用过get()方法能直接拿到对象，说明已经存入过了，Looper已经存在，所以直接抛出异常。
+
 ## HandlerThread
 
 > HandlerThread可以创建一个带有looper的线程。Looper对象可以用于创建Handler类来进行调度。

@@ -1,8 +1,8 @@
 - 网络
-  - [Tcp/Udp/Http/Https/Socket](/java/Tcp和Udp和Http和Https和Socket.md)
-  - [对称加密和非对称加密](/interview/对称加密和非对称加密.md)
-  - [Https的请求过程](/interview/Https的请求过程.md)
-  - [网络耗时优化](/interview/网络耗时优化.md)
+  - [Tcp/Udp/Http/Https/Socket](/internet/Tcp和Udp和Http和Https和Socket.md)
+  - [对称加密和非对称加密](/internet/对称加密和非对称加密.md)
+  - [Https原理和请求过程](/internet/Https原理和请求过程.md)
+  - [网络耗时优化](/internet/网络耗时优化.md)
 - Java
   - [Java基础](/java/Java基础.md)
   - [JVM的内存分配](/java/JVM的内存分配.md)
@@ -12,10 +12,12 @@
   - [线程、多线程、锁](/java/线程、多线程、锁.md)
 - Android
   - [Android基础](/android/Android基础.md)
+  - [Context理解](/android/Context理解.md)
   - [Handler机制](/android/Handler机制.md)
   - [Binder机制](/android/Binder机制.md)
-  - [AIDL进程间通信](/android/AIDL进程间通信.md)
   - [进程和多线程](/android/进程和多线程.md)
+  - [内存泄漏](/interview/内存泄漏.md)
+  - [优化相关](/android/优化相关.md)
 - Android面试
   - [基础问题](/interview/基础问题.md)
   - [ANR](/interview/ANR.md)
@@ -26,11 +28,9 @@
   - [Gradle构建/打包流程](/interview/Gradle构建和打包流程.md)
   - [APK安装流程/启动流程](/interview/APK安装流程.md)
   - [热更新原理及应用](/interview/热更新原理及应用.md)
-  - [内存泄漏和性能优化](/interview/内存泄漏和性能优化.md)
   - [组件化和插件化应用](/interview/组件化和插件化应用.md)
   - [APT和AOP](/interview/APT和AOP.md)
   - [Hook技术原理](/interview/Hook技术原理.md)
-  - [MVC-MVP-MVVM框架模式](/interview/MVC-MVP-MVVM框架模式.md)
 - 数据结构和算法
   - [数据结构](/algorithm/数据结构.md)
   - [算法](/algorithm/算法.md)

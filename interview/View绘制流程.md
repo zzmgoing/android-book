@@ -52,4 +52,46 @@ postInvalidate是在非UI线程中调用，invalidate则是在UI线程中调用�
  
 3、**继承原生控件**：继承如TextView，ImageView，Button等原生控件进行拓展。
 
+## MeasureSpecMode
+
+MeasureSpec是Android view测量系统的重要的一元，它是一个32位的int值，高两位代表测量模式SpecMode，低30位代表测量的大小SpecSize，MeasureSpec用一个int值同时存放了两个信息，而且还节省了内存的开销。
+
+**EXACTLY**：精确模式，对应我们在布局文件中设置宽高时给一个具体值或者match_parent；当前的尺寸就是当前View应该取的尺寸。
+- MATCH_PARENT--->EXACTLY
+- 固定尺寸(100dp)--->EXACTLY
+
+**AT_MOST**：最大值模式：对应设置宽高时给一个wrap_content; 当前尺寸是当前View能取的最大尺寸。
+- WRAP_CONTENT--->AT_MOST
+
+**UNSPECIFIED**：这种测量模式多用在ScrollView中，或者系统内部调用；当前的尺寸就是当前View应该取的尺寸。
+
+父容器对于子容器没有任何限制,子容器想要多大就多大。
+
+```java
+private int getMySize(int defaultSize,int measureSpec){
+        int mySize=defaultSize;
+        //取测量模式
+        int mode=MeasureSpec.getMode(measureSpec);
+        //取测量长度
+        int size=MeasureSpec.getSize(measureSpec);
+
+        switch (mode){
+            //如果没有指定大小，就设置为默认大小
+            case MeasureSpec.UNSPECIFIED:
+                mySize=defaultSize;
+                break;
+                //如果测量模式是最大取值size
+                //我们将大小取最大值，你也可以取其他值
+            case MeasureSpec.AT_MOST:
+                mySize=size;
+                break;
+                //如果是固定的大小，那就不要去改变它
+            case MeasureSpec.EXACTLY:
+                mySize=size;
+                break;
+        }
+        return mySize;
+    }
+```
+
 > [Android自定义View教程目录](https://www.gcssloop.com/category/customview)

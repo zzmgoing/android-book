@@ -80,3 +80,25 @@ Binder的非主线程最大个数是15个，加上主线程的话，总共是**1
 - Sockets
 - Pipes管道  
 - 共享内存 
+
+## AIDL进程间通信
+
+> AIDL（Android Interface Definition Language）是Android系统自定义的接口描述语言，可以用来实现进程间的通讯。底层使用Binder，屏蔽了具体的操作细节，使开发更方便。
+
+### AIDL支持的数据类型
+
+1、八种基本数据类型：byte、char、short、int、long、float、double、boolean  
+2、String，CharSequence  
+3、实现了Parcelable接口的数据类型  
+4、ArrayList和HashMap类型(承载的数据必须是AIDL支持的类型，或者是其它声明的AIDL对象)
+
+### 服务端
+
+1、创建.aidl文件（定义编程接口和方法）。  
+2、实现接口，Android SDK工具基于.aidl文件生成接口文件。这个接口有一个名叫Stub的内部抽象类，Stub扩展了Binder并实现了AIDL接口中声明的方法。  
+3、暴露接口给客户端，实现一个Service重写onBind()，onBind()返回实现了Stub的类。
+
+### 客户端
+
+1、将服务端aidl文件和相关实体类拷贝过来（文件目录应该与服务端相同，包名应该一样）。  
+2、编译后通过bindService使用ServiceConnection来获取binder对象，即可调用服务端方法。  

@@ -20,7 +20,11 @@
 
 !> 当一个点击事件发生时，事件最先传到Activity的dispatchTouchEvent()进行事件分发
 
-![总结](../image/activity_shijianfenfa.webp)
+<details><summary>Activity的事件分发机制</summary>
+
+![Activity的事件分发机制](../image/activity_shijianfenfa.webp)
+
+</details>
 
 ## ViewGroup的事件分发机制
 
@@ -28,13 +32,21 @@
 
 **onInterceptTouchEvent()方法返回true即拦截事件，默认false不拦截**
 
-![总结](../image/viewgroup_shijianfenfa.webp)
+<details><summary>ViewGroup的事件分发机制</summary>
+
+![Activity的事件分发机制](../image/viewgroup_shijianfenfa.webp)
+
+</details>
 
 ## View的事件分发机制
 
 !> 从上面ViewGroup事件分发机制知道，View事件分发机制从dispatchTouchEvent()开始
 
-![总结](../image/view_shijianfenfa.webp)
+<details><summary>View的事件分发机制</summary>
+
+![Activity的事件分发机制](../image/view_shijianfenfa.webp)
+
+</details>
 
 **总结：**
 

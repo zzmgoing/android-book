@@ -45,5 +45,12 @@
 
 例如 Findbugs 等三方的代码检查工具里面的 自定义代码检查 也使用了编译插桩技术，利用它我们可以找出 不合理的 Hanlder 使用、new Thread 调用、敏感权限调用 等等一系列编码问题。
 
+## ASM
+
+ASM 是一款读写Java字节码的工具，可以达到跳过源码编写，编译，直接以字节码的形式创建类，修改已经存在类(或者jar中的class)的属性，方法等。
+
+- ClassWriter（生成类），visitMethod、visitField创建方法、成员变量等。
+- ClassReader（修改类），调用accept方法传入ClassVisitor和ClassWriter对象进行访问类并修改。
+- MethodVisitor（方法注入），一般使用较多。
 
 >[https://blog.csdn.net/qq_20798591/article/details/105261549](https://blog.csdn.net/qq_20798591/article/details/105261549)
