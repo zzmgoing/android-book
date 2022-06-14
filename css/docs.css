@@ -34,7 +34,8 @@ nav.app-nav ul li a img {
 }
 
 .font-red {
-  color: red;
+  color: #ff502c;
+  background-color: #fff5f5;
 }
 
 .font-gray {
