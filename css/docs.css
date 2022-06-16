@@ -39,7 +39,7 @@ nav.app-nav ul li a img {
 }
 
 .font-gray {
-  color: #A5A5A5;
+  color: #999999;
 }
 
 .font-blue {
@@ -51,7 +51,7 @@ nav.app-nav ul li a img {
 }
 
 .bg-red {
-  background-color: tomato;
+  background-color: #fff5f5;
 }
 
 details {
@@ -78,9 +78,7 @@ summary {
 
 @font-face {
     font-family: 'ZhuZiAWan';
-    /* 字体名自定义即可 */
     src: url(fonts/ZhuZiAWan.woff2);
-    /* 字体文件路径 */
     font-display: swap;
 }
 

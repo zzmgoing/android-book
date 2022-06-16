@@ -52,16 +52,16 @@ Java 堆（Heap）是 JVM 所管理的内存中最大的一块，该区域唯一
 
 方法区（Method Area）也是 JVM 规范里规定的一块**运行时数据区**。方法区主要是存储已经被**JVM 加载的类信息（版本、字段、方法、接口）、常量、静态变量、即时编译器编译后的代码和数据**。该区域同堆一样，也是被各个线程共享的内存区域。
 
-### 异常
-
-**StackOverflowError** 栈溢出异常
-
-递归调用是造成StackOverflowError的一个常见场景。原因就是每调用一次method方法时，都会在虚拟机栈中创建出一个栈帧。因为是递归调用，method方法并不会退出，也不会将栈帧销毁，所以必然会导致StackOverflowError。因此当需要使用递归时，需要格外谨慎。
-
-**OutOfMemoryError** 内存溢出异常
-
-理论上，虚拟机栈、堆、方法区都有发生OutOfMemoryError的可能。但是实际项目中，大多发生于堆当中。比如在一个无限循环中，动态的向ArrayList中添加新的HeapError对象。这会不断的占用堆中的内存，当堆内存不够时，必然会产生OutOfMemoryError，也就是内存溢出异常。
-
 ![jvm](../image/jvm_ing.webp)
 
 总结来说，JVM 的运行时内存结构中一共有两个栈和一个堆，分别是：Java 虚拟机栈和本地方法栈，以及GC堆和方法区。除此之外还有一个程序计数器，但是我们开发者几乎不会用到这一部分，所以并不是重点学习内容。 JVM 内存中只有堆和方法区是线程共享的数据区域，其它区域都是线程私有的。并且程序计数器是唯一一个在 Java 虚拟机规范中没有规定任何 OutOfMemoryError 情况的区域。
+
+### 异常
+
+**StackOverflowError**(栈溢出异常)
+
+递归调用是造成StackOverflowError的一个常见场景。原因就是每调用一次method方法时，都会在虚拟机栈中创建出一个栈帧。因为是递归调用，method方法并不会退出，也不会将栈帧销毁，所以必然会导致StackOverflowError。因此当需要使用递归时，需要格外谨慎。
+
+**OutOfMemoryError**(内存溢出异常)
+
+理论上，虚拟机栈、堆、方法区都有发生OutOfMemoryError的可能。但是实际项目中，大多发生于堆当中。比如在一个无限循环中，动态的向ArrayList中添加新的HeapError对象。这会不断的占用堆中的内存，当堆内存不够时，必然会产生OutOfMemoryError，也就是内存溢出异常。

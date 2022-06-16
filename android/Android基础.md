@@ -74,10 +74,10 @@ Linux驱动包含了SurfaceFlingger和Binder，SF驱动的作用是把各个Surf
 
 ### Activity启动模式
 
-- 默认启动模式：**Standard**  
-- 栈顶复用模式：**SingleTop**  
-- 栈内复用模式：**SingleTask**  
-- 全局唯一模式：**SingleInstance**  
+- 默认启动模式：<span class="font-red">Standard</span>
+- 栈顶复用模式：<span class="font-red">SingleTop</span> 
+- 栈内复用模式：<span class="font-red">SingleTask</span>
+- 全局唯一模式：<span class="font-red">SingleInstance</span> 
 
 ### Activity间通信方式
 
@@ -112,28 +112,36 @@ FragmentTransaction的提交方式：
 - commitNow()
 - commitNowAllowingStateLoss()
 
-### commit()
-安排当前事务FragmentTransaction进行提交。但是提交后Fragment不会立即创建，而是由主线程异步来创建。也就是说使用commit()之后，你的Fragment不会被立即加入到Activity中。  
+<details>
+<summary>四种commit提交的区别</summary>
+
+- **commit()**
+
+安排当前事务FragmentTransaction进行提交。但是提交后Fragment不会立即创建，而是由主线程异步来创建。也就是说使用commit()之后，你的Fragment不会被立即加入到Activity中。
 
 本次提交，必须在Activity的onSaveInstanceState调用之前提交。否则会抛异常。
 
-### commitAllowingStateLoss()
+- **commitAllowingStateLoss()**
+
 和commit类似。但是如果本次是在Activity的onSaveInstanceState调用之后，那么本次提交记录在Activity恢复的时候，可能不被保存。
 
-### commitNow()
-将事务立即提交。所有添加的Fragment会被立即初始化，并开始生命周期。所有被移除的Fragment将会被立即移除。  
+- **commitNow()**
+
+将事务立即提交。所有添加的Fragment会被立即初始化，并开始生命周期。所有被移除的Fragment将会被立即移除。
 
 调用这个方法，相当于调用commit，然后调用FragmentManager的executePendingTransactions()。
 
-### commitNowAllowingStateLoss()
+- **commitNowAllowingStateLoss()**
+
 和commitNow类似。但是如果在在Activity的onSaveInstanceState调用之后，那么本次提交记录在Activity恢复的时候，可能不被保存。
 
-**每个FragmentTransaction只能提交commit一次，再commit就会抛出异常。**
+<span class="font-red">每个FragmentTransaction只能提交commit一次，再commit就会抛出异常。</span>
 
 commit()和commitAllowingStateLoss()在实现上唯一的不同就是当你调用commit()的时候, FragmentManger会检查是否已经存储了它自己的状态, 如果已经存了, 就抛出IllegalStateException。
 
 如果用commitAllowingStateLoss()在onSaveInstanceState()之后会丢失FragmentManager的状态, 即save之后任何被添加或被移除的Fragments。
 
+</details>
 
 
 ## Service
@@ -178,10 +186,10 @@ commit()和commitAllowingStateLoss()在实现上唯一的不同就是当你调�
 
 ### onStartCommand返回值
 
-**START_STICKY**：如果service进程被kill掉,保留service的状态为开始状态,但不保留传递的intent对象。随后系统会尝试重新创建service,由于服务状态为开始状态,所以创建服务后一定会调用onStartCommand(Intent,int,int)方法。如果在此期间没有任何启动命令被传递到service,那么参数Intent将为null。   
-**START_NOT_STICKY**：使用这个返回值时,如果在执行完onStartCommand后,服务被异常kill掉,系统不会自动重启该服务。  
-**START_REDELIVER_INTENT**：重传Intent，使用这个返回值时,如果在执行完onStartCommand后,服务被异常kill掉,系统会自动重启该服务,并将Intent的值传入。  
-**START_STICKY_COMPATIBILITY**：START_STICKY的兼容版本,但不保证服务被kill后一定能重启。  
+<span class="font-red">START_STICKY：</span>如果service进程被kill掉,保留service的状态为开始状态,但不保留传递的intent对象。随后系统会尝试重新创建service,由于服务状态为开始状态,所以创建服务后一定会调用onStartCommand(Intent,int,int)方法。如果在此期间没有任何启动命令被传递到service,那么参数Intent将为null。   
+<span class="font-red">START_NOT_STICKY：</span>使用这个返回值时,如果在执行完onStartCommand后,服务被异常kill掉,系统不会自动重启该服务。  
+<span class="font-red">START_REDELIVER_INTENT：</span>重传Intent，使用这个返回值时,如果在执行完onStartCommand后,服务被异常kill掉,系统会自动重启该服务,并将Intent的值传入。  
+<span class="font-red">START_STICKY_COMPATIBILITY：</span>START_STICKY的兼容版本,但不保证服务被kill后一定能重启。  
 
 ### Service使用场景
 
@@ -189,7 +197,7 @@ Service就是不需要和用户交互，在后台默默执行的任务，比如�
 
 </details>
 
-**Service是在主线程（ActivityThread）中调用的，耗时操作会阻塞UI，因此做耗时操作需要开启子线程，或者使用IntentService、JobIntentService。**
+Service是在主线程（ActivityThread）中调用的，耗时操作会阻塞UI，因此做耗时操作需要开启子线程，或者使用IntentService、JobIntentService。
 
 ## BroadcastReceiver
 
@@ -266,7 +274,7 @@ public class MyReceiver extends BroadcastReceiver {
 
 </details>
 
-**BroadcastReceiver中onReceive()方法在10S内没有执行完毕就会被Android系统认为应用程序无响应并弹出ANR对话框，因此BroadcastReceiver里不能做一些比较耗时的操作。**
+BroadcastReceiver中onReceive()方法在10S内没有执行完毕就会被Android系统认为应用程序无响应并弹出ANR对话框，因此BroadcastReceiver里不能做一些比较耗时的操作。
 
 ## ContentProvider
 
@@ -276,7 +284,7 @@ public class MyReceiver extends BroadcastReceiver {
 内容提供者组件通过请求从一个应用程序向其他的应用程序提供数据，这些请求由类ContentResolver的方法来处理。内容提供者可以使用不同的方式来存储数据，数据可以被存放在数据库，文件，甚至是网络。
 
 1、内容提供者可以让内容集中，必要时可以有多个不同的应用程序来访问。  
-2、内容提供者的行为和数据库很像。你可以查询，编辑它的内容，使用insert()，update()，delete()和query()来添加或者删除内容。多数情况下数据被存储在SQLite数据库。  
+2、内容提供者的行为和数据库很像。你可以查询，编辑它的内容，使用<span class="font-red">insert()，update()，delete()和query()</span>来添加或者删除内容。多数情况下数据被存储在SQLite数据库。  
 3、内容提供者被实现为类ContentProvider类的子类。需要实现一系列标准的API，以便其他的应用程序来执行事务。  
 
 <details><summary>ContentProvider内容URI、创建内容提供者</summary>
@@ -319,18 +327,18 @@ public class MyReceiver extends BroadcastReceiver {
 
 </details>
 
-## 四大组件区别和Context
+## 四大组件和Context
 
-- Activity与Service有生命周期，而BroadcastReceiver与ContentProvider采用监听机制，没有生命周期。
-- 四大组件都需要在AndroidManifest.xml中注册，实现时都要继承其抽象的父类
-- 除了ContentProvider外，其他组件都要用到intent。
-- Service与Activity关系最为密切，BroadcastReceiver与ContentProvider的实现基本不依赖于Activity。
+<details>
+<summary>Context继承关系图</summary>
 
 ![context](../image/android_context.png)
 
-- Activity跟Service都继承自Context，区别是Activity包含Theme信息，启动的Activity带有任务栈的信息。
+</details>
+
+- Activity跟Service都继承自Context，都有生命周期，区别是Activity包含Theme信息，启动的Activity带有任务栈的信息，而BroadcastReceiver与ContentProvider采用监听机制，没有生命周期。
 - ContentProvider的Context就是Application。
-- Broadcast Receiver的Context比较特殊，是传进来的，类型是ReceiverRestrictedContext，也就是说进行了一些限制，不能bindService,也不能registerReceiver。
+- BroadcastReceiver的Context比较特殊，是传进来的，类型是ReceiverRestrictedContext，也就是说进行了一些限制，不能bindService,也不能registerReceiver。
 
 Context 就相当于 Application 的大管家，主要负责：
 - 四大组件的交互，包括启动 Activity、Broadcast、Service，获取 ContentResolver 等。
@@ -339,18 +347,18 @@ Context 就相当于 Application 的大管家，主要负责：
 - 数据库（SQLite）相关，包括打开数据库、删除数据库、获取数据库路径等。
 - 其它辅助功能，比如设置 ComponentCallbacks，即监听配置信息改变、内存不足等事件的发生。
 
-ContextWrapper 实际上就是 Context 的代理类而已，所有的操作都是通过内部成员 mBase 完成的，另外，Activity、Service 的 getBaseContext 返回的就是这个 mBase。
+<span class="font-red">ContextWrapper</span> 实际上就是 Context 的代理类而已，所有的操作都是通过内部成员 mBase 完成的，另外，Activity、Service 的 getBaseContext 返回的就是这个 mBase。
 
-相比 ContextWrapper，ContextThemeWrapper 有自己的另外 Resource 以及 Theme 成员，并且可以传入配置信息以初始化自己的 Resource 及 Theme。即 Resource 以及 Theme 相关的行为不再是直接调用 mBase 的方法了，也就说，ContextThemeWrapper 和它的 mBase 成员在 Resource 以及 Theme 相关的行为上是不同的。
+相比 ContextWrapper，<span class="font-red">ContextThemeWrapper</span> 有自己的另外 Resource 以及 Theme 成员，并且可以传入配置信息以初始化自己的 Resource 及 Theme。即 Resource 以及 Theme 相关的行为不再是直接调用 mBase 的方法了，也就说，ContextThemeWrapper 和它的 mBase 成员在 Resource 以及 Theme 相关的行为上是不同的。
 
-ContextImpl 和 ContextThemeWrapper 最大的区别就是没有一个 Configuration 而已，其它的行为大致是一样的。另外，ContextImpl 可以用于创建 Activity、Service 以及 Application 的 mBase 成员，这个 Base Context 时除了参数不同，它们的 Resource 也不同。需要注意的是，createActivityContext 等方法中 setResource 是 mBase 自己调用的，Activity、Service 以及 Application 本身并没有执行 setResource。
+<span class="font-red">ContextImpl</span> 和 ContextThemeWrapper 最大的区别就是没有一个 Configuration 而已，其它的行为大致是一样的。另外，ContextImpl 可以用于创建 Activity、Service 以及 Application 的 mBase 成员，这个 Base Context 除了参数不同，它们的 Resource 也不同。需要注意的是，createActivityContext 等方法中 setResource 是 mBase 自己调用的，Activity、Service 以及 Application 本身并没有执行 setResource。
 
 **小结**
 
 - ContextWrapper、ContextThemeWrapper 都是 Context 的代理类，二者的区别在于 ContextThemeWrapper 有自己的 Theme 以及 Resource，并且 Resource 可以传入自己的配置初始化
 - ContextImpl 是 Context 的主要实现类，Activity、Service 和 Application 的 Base Context 都是由它创建的，即 ContextWrapper 代理的就是 ContextImpl 对象本身
 - ContextImpl 和 ContextThemeWrapper 的主要区别是， ContextThemeWrapper 有 Configuration 对象，Resource 可以根据这个对象来初始化
-- Service 和 Application 使用同一个 Recource，和 Activity 使用的 Resource 不同
+- Service 和 Application 使用同一个 Resource，和 Activity 使用的 Resource 不同
 
 **重点**
 
@@ -358,7 +366,7 @@ ContextImpl 和 ContextThemeWrapper 最大的区别就是没有一个 Configurat
 
 在Activity中不加FLAG_ACTIVITY_NEW_TASK调用startActivity时不会报错是因为Activity重写了ContextWrapper中的startActivity方法，没有加FLAG_ACTIVITY_NEW_TASK判断。
 
-NEW_TASK这个属性它的原则是：设置此状态，首先会查找是否存在和被启动的Activity具有相同的亲和性的任务栈（即taskAffinity，注意同一个应用程序中的activity的亲和性一样），如果有，则直接把这个栈整体移动到前台，并保持栈中的状态不变，即栈中的activity顺序不变，如果没有，则新建一个栈来存放被启动的activity。总结来说就是**同一个应用中跳转不会创建新的Task，跳到另外一个应用中会启动新的Task。**
+<span class="font-red">NEW_TASK</span>这个属性它的原则是：设置此状态，首先会查找是否存在和被启动的Activity具有相同的亲和性的任务栈（即taskAffinity，注意同一个应用程序中的activity的亲和性一样），如果有，则直接把这个栈整体移动到前台，并保持栈中的状态不变，即栈中的activity顺序不变，如果没有，则新建一个栈来存放被启动的activity。总结来说就是<span class="font-blue">同一个应用中跳转不会创建新的Task，跳到另外一个应用中会启动新的Task。</span>
 
 ## Animation
 
@@ -379,7 +387,7 @@ NEW_TASK这个属性它的原则是：设置此状态，首先会查找是否存
 
 Android 3.0（API 11）后才提供的一种全新动画模式，出现原因是因为补间动画作用对象局限于View，没有改变View的属性，只是改变视觉效果，动画效果单一。
 
-**ValueAnimator、ObjectAnimator**是属性动画重要的两个类。  
+<span class="font-red">ValueAnimator、ObjectAnimator</span>是属性动画重要的两个类。  
 
 <details><summary>ValueAnimator、ObjectAnimator详解</summary>
 
@@ -399,10 +407,10 @@ ObjectAnimator功能更加强大，可以控制位移、透明度、旋转、缩
 
 - AccelerateDecelerateInterpolator ：在动画开始与结束的地方速率改变比较慢，在中间的时候加速  
 - AccelerateInterpolator：在动画开始的地方速率改变比较慢，然后开始速率变化加快  
-- **LinearInterpolator**：以常量速率改变  
+- <span class="font-blue">LinearInterpolator：</span>以常量速率改变  
 - AnticipateInterpolator：开始的时候向后然后向前甩  
-- **CycleInterpolator**：动画循环播放特定的次数，速率改变沿着正弦曲线  
-- **PathInterpolator**：动画执行的效果按贝塞尔曲线  
+- <span class="font-blue">CycleInterpolator：</span>动画循环播放特定的次数，速率改变沿着正弦曲线  
+- <span class="font-blue">PathInterpolator：</span>动画执行的效果按贝塞尔曲线  
 - anticipateOvershootInterpolator：开始的时候向后然后向前甩一定值后返回最后的值  
 - OvershootInterpolator：向前甩一定值后再回到原来位置  
 - BounceInterpolator：动画结束的时候有弹起效果  
@@ -420,7 +428,18 @@ ObjectAnimator功能更加强大，可以控制位移、透明度、旋转、缩
 
 - 补间动画只是绘制了一个不同的影子，view对象还在原来的位置。  
 比如位移后点击原来的位置会响应点击事件，旋转后再次旋转会从头开始重新旋转。
-- 而**属性动画则是真正的视图移动**，例如点击移动后的视图会响应点击事件。
+- 而<span class="font-red">属性动画则是真正的视图移动</span>，例如点击移动后的视图会响应点击事件。
+
+### Android属性动画原理
+
+- Android属性动画通过监听帧刷新事件，在下一帧开始绘制前更新属性值；
+- Android帧刷新统一由Choreographer指挥，在每一帧到来时，依次处理input、animation、traversal和commit事件，属性动画在animation阶段进行属性值更新；
+- Android属性更新分为两阶段，第一阶段：将动画已播放时长百分比通过时间插值器转换为动画完成百分比（即属性变化的百分比）；第二阶段：将属性变化的百分比通过类型估值器映射为特定的属性值；
+- Android界面绘制由两种模型：软件绘制和硬件加速绘制，软件绘制时，主线程负责执行绘制工作；硬件加速时，主线程将要绘制的内容交给渲染线程，由渲染线程执行绘制的工作。针对特定属性动画时，开启硬件加速可以提升动画流畅性。
+
+<span class="font-red">内存泄漏：</span>
+
+属性动画开始时，向AnimationHandler注册自身作为帧刷新回调接口，结束时才会解除注册，如果view销毁时，动画没有结束，AnimationHandler会一直持有该对象，造成内存泄漏问题。
 
 ## 数据存储
 

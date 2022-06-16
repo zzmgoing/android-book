@@ -56,10 +56,10 @@ onTouchEvent()方法来消费事件，如果没有消费事件则会回传给上
 
 ## 解决子控件事件被拦截
 
-1、在子控件的dispatchTouchEvent()或onInterceptTouchEvent()方法中ACTION_DOWN的时候调用**getParent().requestDisallowInterceptTouchEvent(true)** 方法请求父类不要拦截事件，然后自己做处理。  
-在ACTION_UP或ACTION_CANCEL的时候调用**requestDisallowInterceptTouchEvent(false)。**
+1、在子控件的dispatchTouchEvent()或onInterceptTouchEvent()方法中ACTION_DOWN的时候调用<span class="font-red">getParent().requestDisallowInterceptTouchEvent(true)</span>方法请求父类不要拦截事件，然后自己做处理。  
+在ACTION_UP或ACTION_CANCEL的时候调用<span class="font-red">requestDisallowInterceptTouchEvent(false)。</span>
 
-**NestedScrollingParent、NestedScrollingChild**
+2、使用<span class="font-red">NestedScrollingParent、NestedScrollingChild</span>
 
 NestedScrollingParent和NestedScrollingChild可以解决ViewGroup滑动嵌套冲突。
 

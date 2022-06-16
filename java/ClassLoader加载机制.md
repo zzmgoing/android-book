@@ -8,14 +8,11 @@
 - 调用类中的静态（static）变量或者静态方法
 
 JVM 中自带 3 个类加载器：
-- 启动类加载器：**BootstrapClassLoader**
-- 扩展类加载器：**ExtClassLoader**（JDK 1.9 之后，改名为 PlatformClassLoader）
-- 系统加载器：**APPClassLoader**
+- 启动类加载器：<span class="font-red">BootstrapClassLoader</span>
+- 扩展类加载器：<span class="font-red">ExtClassLoader</span>（JDK 1.9 之后，改名为 PlatformClassLoader）
+- 系统加载器：<span class="font-red">APPClassLoader</span>
 
 ## 双亲委派模式
-
-既然 JVM 中已经有了这 3 种 ClassLoader，那么 JVM 又是如何知道该使用哪一个类加载器去加载相应的类呢？  
-答案就是：双亲委派模式（Parents Delegation Model）。
 
 所谓双亲委派模式就是，当类加载器收到加载类或资源的请求时，通常都是先委托给父类加载器加载，也就是说，只有当父类加载器找不到指定类或资源时，自身才会执行实际的类加载过程。
 
@@ -33,7 +30,7 @@ JVM 中自带 3 个类加载器：
 
 本质上，Android 和传统的 JVM 是一样的，也需要通过 ClassLoader 将目标类加载到内存，类加载器之间也符合双亲委派模型。但是在 Android 中， ClassLoader 的加载细节有略微的差别。
 
-在 Android 虚拟机里是无法直接运行 .class 文件的，Android 会将所有的 .class 文件转换成一个 .dex 文件，并且 Android 将加载 .dex 文件的实现封装在 BaseDexClassLoader 中，而我们一般只使用它的两个子类：**PathClassLoader** 和 **DexClassLoader**。
+在 Android 虚拟机里是无法直接运行 .class 文件的，Android 会将所有的 .class 文件转换成一个 .dex 文件，并且 Android 将加载 .dex 文件的实现封装在 BaseDexClassLoader 中，而我们一般只使用它的两个子类：<span class="font-red">PathClassLoader</span>和<span class="font-red">DexClassLoader</span>。
 
 ### PathClassLoader
 

@@ -1,7 +1,7 @@
 # ListView、RecyclerView区别
 
 - ListView中ViewHolder是需要自定义的，在RecyclerView中ViewHolder是谷歌已经封装好的。   
-- ListView和RecyclerView**最大的区别在于数据源改变时的缓存策略**，listView缓存Item，RecyclerView缓存Item和ViewHolder。  
+- ListView和RecyclerView<span class="font-red">最大的区别在于数据源改变时的缓存策略</span>，listView缓存Item，RecyclerView缓存Item和ViewHolder。  
 - ListView中的Item是只能垂直滑动的，RecyclerView可以水平滑动或者垂直滑动，针对多种类型条目的展示效果，如瀑布流 网格 支持多种类型。  
 - ListView中删除或添加item时，item是无法产生动画效果的，在RecyclerView中添加、删除或移动item时有两种默认的效果可以选择SimpleItemAnimator（简单条目动画） 和 DefaultItemAnimator（原样的条目动画）。
 

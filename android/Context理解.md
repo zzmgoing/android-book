@@ -29,7 +29,7 @@ ContextThemeWrapper继承ContextWrapper，因此也拥有一个Context类型的�
 
 ContextImpl实例生成对应着mBase的赋值过程：
 
-在启动Activity时，在ActivityThread内部通过handleLaunchActivity()方法一系列调用，在通过Instrucmentation创建完Activity后，会先调用Activity的attach()方法，会传入已创建好的ContextImpl对象，在Attach()方法内部会先调用attachBaseContext(context)方法，会将ContextImpl通过super.attachBaseContext(context)一步一步最后赋值给ContextWrapper的mBase，接下来再调用activity的onCreate()。
+在启动Activity时，在ActivityThread内部通过handleLaunchActivity()方法一系列调用，在通过Instrucmentation创建完Activity后，会先调用Activity的attach()方法，传入已创建好的ContextImpl对象，在Attach()方法内部会先调用attachBaseContext(context)方法，会将ContextImpl通过super.attachBaseContext(context)一步一步最后赋值给ContextWrapper的mBase，接下来再调用activity的onCreate()。
 
 ## ContentProvider里的Context初始化
 
@@ -40,13 +40,13 @@ ContentProvider本身不是Context ，但是它有一个成员变量 mContext �
 - 初始化 Application的Context
 - 调用installContentProviders()并传入刚创建好的context来创建ContentProvider
 - 调用Application.onCreate()
-- ContentProvider的Context是在Application创建之后，调用onCreate方法调用之前初始化的。
+- ContentProvider的Context是在Application创建之后，调用onCreate方法之前初始化的。
 
 ## 四大组件Context的区别
 
 - Activity跟Service都继承自Context，区别是Activity包含Theme信息，启动的Activity带有任务栈的信息。
 - ContentProvider的Context就是Application。
-- Broadcast Receiver的Context比较特殊，是传进来的，类型是ReceiverRestrictedContext，也就是说进行了一些限制，不能bindService,也不能registerReceiver。
+- BroadcastReceiver的Context比较特殊，是传进来的，类型是ReceiverRestrictedContext，也就是说进行了一些限制，不能bindService,也不能registerReceiver。
 
 ## 非Activity的Context启动Activity报错
 

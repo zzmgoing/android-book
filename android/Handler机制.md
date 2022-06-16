@@ -19,7 +19,7 @@
 
 ### MessageQueue数据结构
 
-MessageQueue内部持有一个Message对象，采用**单项链表**的形式来维护消息列队。并且提供了入队，出队的基础操作。
+MessageQueue内部持有一个Message对象，采用<span class="font-red">单项链表</span>的形式来维护消息列队。并且提供了入队，出队的基础操作。
 
 ### MessageQueue是什么时候创建的
 
@@ -27,9 +27,10 @@ MessageQueue是在Looper的构造函数里面创建的，所以一个线程对�
 
 ### Looper，Handler，MessageQueue的引用关系
 
-一个Handler对象持有一个MessageQueue和它构造时所属线程的Looper引用。也就是说一个Handler必须持有它对应的消息队列和Looper。一个线程可能有多个Handler，但是至多有只能有一个Looper和一个消息队列。
+一个Handler对象持有一个MessageQueue和它构造时所属线程的Looper引用。也就是说一个Handler必须持有它对应的消息队列和Looper。
+<span class="font-red">一个线程可能有多个Handler，但是至多有只能有一个Looper和一个消息队列。</span>
 
-在主线程中new了一个Handler对象后，这个Handler对象自动和主线程生成的Looper以及消息队列关联上了。子线程中拿到主线程中Handler的引用，发送消息后，消息对象就会发送到target属性对应的那个Handler对应的消息队列中去，由对应Looper来处理(子线程msg->主线程handler->主线程messageQueue->主线程Looper->主线程Handler的handlerMessage)。而消息发送到主线程Handler，那么也就是发送到主线程的消息队列，用主线程的Looper轮询。
+<span class="font-gray">在主线程中new了一个Handler对象后，这个Handler对象自动和主线程生成的Looper以及消息队列关联上了。子线程中拿到主线程中Handler的引用，发送消息后，消息对象就会发送到target属性对应的那个Handler对应的消息队列中去，由对应Looper来处理(子线程msg->主线程handler->主线程messageQueue->主线程Looper->主线程Handler的handlerMessage)。而消息发送到主线程Handler，那么也就是发送到主线程的消息队列，用主线程的Looper轮询。</span>
 
 ### 为什么使用Handler
 
@@ -48,10 +49,10 @@ MessageQueue是在Looper的构造函数里面创建的，所以一个线程对�
 Handler有一个mAsynchronous（非标准读音：A森磕儿那思）的属性，在构造函数中接收一个async参数来表示是否是异步，我们一般用的默认构造方法都是false，所以通过send方法发送的都是同步消息，发出后都会在消息队列里面排队等待处理。
 Android系统每隔16ms会刷新一次屏幕，如果主线程的消息过多在16ms内没有执行完就会造成卡顿或者掉帧，这个时候我们就需要使用异步消息。
 
-MessageQueue通过**消息屏障**让异步消息不用通过排队等候处理，这个消息屏障可以理解为一堵墙，把同步消息队列拦住，
+MessageQueue通过<span class="font-red">消息屏障</span>让异步消息不用通过排队等候处理，这个消息屏障可以理解为一堵墙，把同步消息队列拦住，
 先处理异步消息，异步消息处理完了就会取消这堵墙，然后继续处理同步消息。
 
-消息屏障体现在MessageQueue里面的postSyncBarrier方法，创建了一个没有target属性的message，MessageQueue的next方法在处理异步消息时有一个判断，如果**message的target为空**就是屏障消息，然后while循环直到取出异步消息终止，接下来的处理就跟同步消息一样。
+消息屏障体现在MessageQueue里面的postSyncBarrier方法，创建了一个没有target属性的message，MessageQueue的next方法在处理异步消息时有一个判断，如果<span class="font-red">message的target为空</span>就是屏障消息，然后while循环直到取出异步消息终止，接下来的处理就跟同步消息一样。
 
 **怎么发送异步消息？**
 
@@ -60,9 +61,9 @@ MessageQueue通过**消息屏障**让异步消息不用通过排队等候处理�
 
 ## Handler何如处理延迟消息
 
-Handler 延时消息机制不是延时发送消息，而是延时去处理消息，比如将消息插入消息队列后等3秒后再去处理。
+Handler 延时消息机制不是延时发送消息，而是<span class="font-red">延时去处理消息</span>，比如将消息插入消息队列后等3秒后再去处理。
 
-<details><summary>enqueueMessage(Message msg, long when)</summary>
+<details><summary>消息入列：enqueueMessage(Message msg, long when)</summary>
 
 ```java
 boolean enqueueMessage(Message msg, long when) {
