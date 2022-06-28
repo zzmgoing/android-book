@@ -252,6 +252,26 @@ Android Q 在外部存储设备中为每个应用提供了一个“隔离存储�
 
 从 Android Q 开始，应用必须具有 READ_PRIVILEGED_PHONE_STATE 签名权限才能访问设备的不可重置标识符（包含 IMEI 和序列号）。
 
+## 11.0
+
+### Scoped Storage（分区存储）
+
+存储分为私有存储（每个应用有内部的data/data/packageName）和共享存储（SD卡、媒体集）
+
+1. 分区存储在android10中新增，但在android11中强制启用。 targetSdkVersion >= 30 ,强制实行分区存储。AndroidManifest.xml中增加 android:requestLegacyExternalStorage="true"的适配办法已不起效果。
+2. MANAGE_EXTERNAL_STORAGE 所有文件管理权限，即使有了权限也无法访问Android/data/目录下的文件。不推荐为了适配使用。
+3. 存储访问框架 (SAF: Storage Access Framework API) 改动。
+4. REQUEST_INSTALL_PACKAGES，在Android 11中当用户打开“设备不知道来历运用”的权限，app就会被杀死。该行为与强制分区存储有关，由于持有 REQUEST_INSTALL_PACKAGES 权限的运用能够拜访其他运用的Android/obb 目录。
+
+### APK签名
+V2及更高版本的签名。一同Android 11 增加了对 APK 签名方案 v4 的支撑。
+
+
+## 12.0
+
+### android:exported
+Android四大组件 Activity，Service，Provider，Receiver 四大组件中都具有该属性：如果四大组件中有intent-filter节点，则需要指定android:exported为true或为false。
+
 
 >https://www.cnblogs.com/candyzhmm/p/11242938.html  
 >http://www.cocoachina.com/articles/29242  

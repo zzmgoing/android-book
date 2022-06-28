@@ -27,8 +27,9 @@ Flutter 的 Release 包默认是使用 Dart AOT 模式编译的，所以不支�
 
 > [美团外卖Flutter动态化实践](https://tech.meituan.com/2020/06/23/meituan-flutter-flap.html)
 
+![flutterEngine](../image/flutter_engine.jpg)
+
 </details>
-<br>
 
 <details><summary>Dart简介</summary>
 
@@ -49,6 +50,28 @@ async、await本质上就是Dart对异步操作的一个语法糖，可以减少
 **isolate是Dart平台对线程的实现方案**，但和普通Thread不同的是，isolate拥有独立的内存，**isolate由线程和独立内存构成**。正是由于isolate线程之间的内存不共享，所以isolate线程之间并不存在资源抢夺的问题，所以也不需要锁。
 
 </details>
+
+<details><summary>为什么使用 Dart？</summary>
+
+这是一个很有意思的问题，Flutter选择了 Dart而不是 JavaScript。我觉得主要有以下几个原因：
+
+- Dart 的性能更好。Dart在 JIT模式下，速度与 JavaScript基本持平。但是 Dart支持 AOT，当以 AOT模式运行时，JavaScript便远远追不上了。速度的提升对高帧率下的视图数据计算很有帮助。
+- Native Binding。在 Android上，v8的 Native Binding可以很好地实现，但是 iOS上的 JavaScriptCore不可以，所以如果使用 JavaScript，Flutter 基础框架的代码模式就很难统一了。而 Dart的 Native Binding可以很好地通过 Dart Lib实现。
+- Fuchsia OS，看起来不像原因的一个原因。Fuchsia OS内置的应用浏览器就是使用 Dart语言作为 App的开发语言。而且实际上，Flutter是 Fuchisa OS的应用框架概念上的一个子集。（Flutter源代码和编译工具链也充斥了大量的 Fuchsia宏）
+- Dart是类型安全的语言，拥有完善的包管理和诸多特性。Google召集了如此多个编程语言界的设计专家开发出这样一门语言，旨在取代 JavaScript，所以 Fuchsia OS内置了 Dart。Dart可以作为 embedded lib嵌入应用，而不用只能随着系统升级才能获得更新，这也是优势之一。
+
+</details>
+
+## 绘制原理
+
+显示器以固定的频率刷新，比如 iPhone的 60Hz、iPad Pro的 120Hz。当一帧图像绘制完毕后准备绘制下一帧时，显示器会发出一个垂直同步信号（VSync），所以 60Hz的屏幕就会一秒内发出 60次这样的信号。
+Android每16ms发送一次刷新信号。
+
+Flutter和 React-Native之众的本质区别：React-Native之类只是扩展调用 OEM组件，而 Flutter是自己渲染。
+
+Flutter只关心向 GPU提供视图数据，GPU的 VSync信号同步到 UI线程，UI线程使用 Dart来构建抽象的视图结构，这份数据结构在 GPU线程进行图层合成，视图数据提供给 Skia引擎渲染为 GPU数据，这些数据通过 OpenGL或者 Vulkan提供给 GPU。
+
+所以 Flutter并不关心显示器、视频控制器以及 GPU具体工作，它只关心 GPU发出的 VSync信号，尽可能快地在两个 VSync信号之间计算并合成视图数据，并且把数据提供给 GPU。
 
 ## Flutter与Activity通信
 
@@ -75,6 +98,41 @@ RenderObject为应用程序提供真正的渲染。它的主要职责是绘制�
 调用一个Widget的setState()方法，它会将当前Widget及其所有子Widget都标记要重新刷新的状态，等待下一个Vsync刷新信号到来时重新刷新所有这些标记为刷新状态的控件，也就是调用他们的build方法。
 
 局部刷新的话可以给子部件Widget添加一个GlobalKey，完成跟Element的绑定，拿到子部件Widget的State来进行刷新。
+
+## 状态管理
+
+- 业务逻辑与界面没有分离，可阅读差、维护困难增加；
+- 不方便多个widget之间的状态通信；
+- 不能做到局部重绘，如果每次重绘widget中所有的元素，那么性能肯定不理想。
+
+<span class="font-red">Provider</span>：是为恒定的数据提供的方法(类)。当一个widget只是从这个model中取数据，而不去监听数据的变化而去重绘界面.
+
+比如列表的状态，订单的状态发生改变等。
+
+<span class="font-red">FutureProvider</span>: 可以给FutureProvider提供一份初始的数据Model，通过Future方法返回新的Model数据，刷新ui。FutureProvider可以用于只有第一次需要刷新的ui。
+
+比如网络请求，只需要请求一次没有刷新。
+
+<span class="font-red">StreamProvider</span>： 可以给StreamProvider提供一份初始的数据Model，通过给StreamProvider设置了一个每隔1秒更新一次的stream，ui上的计数值也是每隔一秒改变一次。
+
+比如倒计时组件。
+
+<span class="font-red">ValueListenableProvider</span>：ValueListenableProvider通过构造器绑定数据并进行监听。当一个数据发生变化时，要重绘widget对应的元素时，可以用它。
+
+比如购物车商品点击+号，对应的数量发生改变。
+
+<span class="font-red">MultiProvider</span>：可以组合Provider所提供的类，给Ui提供多个数据Model。
+
+<span class="font-red">ChangeNotifierProvider</span>：当model对像中有数据变化时，需要触发widget中的元素重绘，实现数据驱动，这时我们需要用到ChangeNotifierProvider。
+
+model类必须继承ChangeNotifier类; 当需要更新widget时内容时，需要在model类中调用notifyListeners()。
+
+<span class="font-red">ChangeNotifierProxyProvider</span>：当一个model依赖另一个model时，就以用ChangeNotifierProxyProvider把依赖的model推给被依赖model对像。
+
+比如点击优惠券展示优惠券详情的弹窗等。
+
+<span class="font-red">ListenableProvider</span>：与ChangeNotifierProxyProvider的作用及用法基本相似, 所不同的是也像ChangeNotifierProxyProvider.value一样，当widget注销后，不会触发model中的dispose方法。
+
 
 ## StatefulWidget生命周期
 
