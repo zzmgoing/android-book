@@ -172,6 +172,24 @@ LocalKey 派生出了许多子类 key：
 - UniqueKey : UniqueKey()，每一个 Key 都具有唯一性，它将会通过该对象生成一个具有唯一性的 hash 码。每次 Widget 被构建时都会去重新生成一个新的 UniqueKey，失去了一致性。
 - ValueKey 又派生出了 PageStorageKey : PageStorageKey(‘value’)：能够保持 Sliver 的滚动状态
 
+## Future、Stream
+
+Future是一个不会马上完成的计算过程,说的通俗一点就是一个异步执行过程,需要配合async和await一起使用。不会阻塞在此之后的代码，等待计算完成后才会返回结果。
+如果想在异步函数返回结果后再做其他操作，可以使用then()方法来监听。
+
+FutureBuilder会基于传入的future的返回结果来构建Widget
+
+Stream是一系列异步事件的序列，相当于一个异步的跌代器(Iterable)。不同于Future只是一个事件执行过程，Stream可以发送执行多个事件。使用场景不同。
+
+- 创建方式有2种，一个是单订阅的Stream，一种是能多订阅的流，也就是可以广播。
+- 订阅后(listen)会返回一个StreamSubscription，就是一个观察者。
+- 2种方式的构造方法都有一个可选参数sync，默认为false。
+
+sync为false创建的是一个异步事件`StreamController`, sync为true时创建的是一个同步StreamController。因为大部分场景下使用Stream都是为了异步，所以我们直接不传入即可。
+
+在界面中，一般使用StreamBuilder来来配合Stream使用。可以实现多状态界面。
+
+
 > [Flutter中关于setState的理解(三)](https://www.jianshu.com/p/24018d234210)
 > [Flutter中Widget 、Element、RenderObject角色深入分析](https://zhuanlan.zhihu.com/p/183645816)  
 > [Flutter渲染之Widget、Element 和 RenderObject](https://www.jianshu.com/p/71bb118517b1)
